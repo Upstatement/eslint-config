@@ -1,0 +1,33 @@
+{
+  "name": "@upstatement/eslint-config",
+  "version": "0.1.0",
+  "description": "Upstatement's default ESLint configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Upstatement/eslint-config"
+  },
+  "keywords": [
+    "eslint",
+    "config",
+    "upstatement"
+  ],
+  "author": {
+    "name": "Upstatement",
+    "email": "tech@upstatement.com",
+    "twitter": "@upstatement"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Upstatement/eslint-config/issues"
+  },
+  "dependencies": {
+    "babel-eslint": "^8.2.5",
+    "eslint": "^5.0.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "prettier": "^1.13.6"
+  }
+}
