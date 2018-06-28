@@ -1,15 +1,57 @@
+// TODO: add this as a dependency once prettier config is published
 const prettier = require('@upstatement/prettier-config');
 
 module.exports = {
-  extends: ['plugin:prettier/recommended'],
-  plugins: ['prettier'],
-  env: { es6: true },
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
+  'root': true,
+  'extends': [
+    'eslint:recommended',
+    'plugin:prettier/recommended'
+  ],
+  'plugins': ['prettier'],
+  'parser': 'babel-eslint',
+  'parserOptions': {
+    'ecmaVersion': 2018,
+    'jsx': true
   },
-  rules: {
+  'env': {
+    'browser': true,
+    'node': true,
+    'es6': true,
+  },
+  'rules': {
     'prettier/prettier': ['error', prettier],
-    'no-var': 'error'
+
+    // Best Practices
+    'curly':      'error',
+    'eqeqeq':     'error',
+    'no-eq-null': 'error',
+
+    // Variables
+    'no-undef':             'error',
+    'no-use-before-define': ['error', 'nofunc'],
+
+    // Stylistic Issues
+    'brace-style':                  ["error", "1tbs", { "allowSingleLine": true }],
+    'comma-dangle':                 ['error', 'never'],
+    'comma-spacing':                'error',
+    'comma-style':                  'error',
+    'func-call-spacing':            'error',
+    'indent':                       ['error', 2, { 'SwitchCase': 1, 'MemberExpression': 1 }],
+    'key-spacing':                  ['error', { 'mode': 'minimum' }],
+    'keyword-spacing':              'error',
+    'object-curly-spacing':         ['error', 'always'],
+    'one-var':                      ['error', 'never'],
+    'quotes':                       ['error', 'single', { 'allowTemplateLiterals': true }],
+    'semi':                         ['error', 'always'],
+    'space-before-function-paren':  ['error', 'never'],
+    'space-infix-ops':              'error',
+
+    // ECMAScript 6
+    'arrow-spacing':          'error',
+    'no-duplicate-imports':   'error',
+    'no-useless-constructor': 'error',
+    'no-var':                 'error',
+    'prefer-const':           'error',
+    'prefer-template':        'error',
   }
 }

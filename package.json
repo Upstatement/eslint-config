@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "babel-eslint": "^8.2.5",
-    "eslint": "^5.0.0",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.1",
     "prettier": "^1.13.6"
   }
