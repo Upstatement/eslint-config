@@ -59,19 +59,19 @@ Testing thie module locally is a multi-step process since it depends on Upstatem
 
 First, make sure you have Upstatement's [prettier config](https://github.com/Upstatement/prettier-config) cloned locally. If you don't, go ahead and do that first.
 
-In the **prettier config's repo**, create a global link for the package:
+In the **prettier config repo**, create a global link for the package:
 
 ```bash
 npm link
 ```
 
-Once you've cloned this repo, link-install the prettier config
+Then in **this repo**, link-install the prettier config
 
 ```bash
 npm link @upstatement/prettier-config
 ```
 
-And create a global link for this package:
+Also in **this repo**, create a global link for this package:
 
 ```bash
 npm link
