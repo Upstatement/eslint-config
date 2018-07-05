@@ -1,58 +1,58 @@
-const prettier = require("@upstatement/prettier-config");
+const prettier = require('@upstatement/prettier-config');
 
 module.exports = {
-  "root": true,
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended"
+  'root': true,
+  'extends': [
+    'eslint:recommended',
+    'plugin:prettier/recommended'
   ],
-  "plugins": ["prettier"],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "jsx": true
+  'plugins': ['prettier'],
+  'parser': 'babel-eslint',
+  'parserOptions': {
+    'ecmaVersion': 2018,
+    'jsx': true
   },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true,
+  'env': {
+    'browser': true,
+    'node': true,
+    'es6': true,
   },
-  "rules": {
-    "prettier/prettier": ["error", prettier],
+  'rules': {
+    'prettier/prettier': ['error', prettier],
 
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+    'no-console': ['error', { 'allow': ['warn', 'error'] }],
 
     // Best Practices
-    "curly":      "error",
-    "eqeqeq":     "error",
-    "no-eq-null": "error",
+    'curly':      'error',
+    'eqeqeq':     'error',
+    'no-eq-null': 'error',
 
     // Variables
-    "no-undef":             "error",
-    "no-use-before-define": ["error", "nofunc"],
+    'no-undef':             'error',
+    'no-use-before-define': ['error', 'nofunc'],
 
     // Stylistic Issues
-    "brace-style":                  ["error", "1tbs", { "allowSingleLine": true }],
-    "comma-dangle":                 ["error", "always-multiline"],
-    "comma-spacing":                "error",
-    "comma-style":                  "error",
-    "func-call-spacing":            "error",
-    "indent":                       ["error", 2, { "SwitchCase": 1, "MemberExpression": 1 }],
-    "key-spacing":                  ["error", { "mode": "minimum" }],
-    "keyword-spacing":              "error",
-    "object-curly-spacing":         ["error", "always"],
-    "one-var":                      ["error", "never"],
-    "quotes":                       ["error", "single", { "allowTemplateLiterals": true }],
-    "semi":                         ["error", "always"],
-    "space-before-function-paren":  ["error", "never"],
-    "space-infix-ops":              "error",
+    'brace-style':                  ['error', '1tbs', { 'allowSingleLine': true }],
+    'comma-dangle':                 ['error', 'always-multiline'],
+    'comma-spacing':                'error',
+    'comma-style':                  'error',
+    'func-call-spacing':            'error',
+    'indent':                       ['error', 2, { 'SwitchCase': 1, 'MemberExpression': 1 }],
+    'key-spacing':                  ['error', { 'mode': 'minimum' }],
+    'keyword-spacing':              'error',
+    'object-curly-spacing':         ['error', 'always'],
+    'one-var':                      ['error', 'never'],
+    'quotes':                       ['error', 'single', { 'allowTemplateLiterals': true }],
+    'semi':                         ['error', 'always'],
+    'space-before-function-paren':  ['error', 'never'],
+    'space-infix-ops':              'error',
 
     // ECMAScript 6
-    "arrow-spacing":          "error",
-    "no-duplicate-imports":   "error",
-    "no-useless-constructor": "error",
-    "no-var":                 "error",
-    "prefer-const":           "error",
-    "prefer-template":        "error",
+    'arrow-spacing':          'error',
+    'no-duplicate-imports':   'error',
+    'no-useless-constructor': 'error',
+    'no-var':                 'error',
+    'prefer-const':           'error',
+    'prefer-template':        'error',
   }
 }

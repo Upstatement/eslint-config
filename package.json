@@ -25,10 +25,11 @@
     "url": "https://github.com/Upstatement/eslint-config/issues"
   },
   "dependencies": {
+    "@upstatement/prettier-config": "^0.1.0",
     "babel-eslint": "^8.2.5",
     "eslint": "^5.0.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.1",
-    "prettier": "^1.13.6"
+    "prettier": "^1.13.7"
   }
 }
