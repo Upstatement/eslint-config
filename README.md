@@ -34,7 +34,7 @@ Just use this in your `.eslintrc` file instead:
 
 ```json
 {
-  "extends": "@upstatement/prettier-config/four-spaces-config"
+  "extends": "@upstatement/eslint-config/four-spaces-config"
 }
 ```
 
