@@ -1,7 +1,4 @@
-const prettier = require('@upstatement/prettier-config');
-
 module.exports = {
-  'root': true,
   'extends': [
     'eslint:recommended',
     'plugin:prettier/recommended'
@@ -18,8 +15,6 @@ module.exports = {
     'es6': true,
   },
   'rules': {
-    'prettier/prettier': ['error', prettier],
-
     'no-console': ['error', { 'allow': ['warn', 'error'] }],
 
     // Best Practices
@@ -28,7 +23,6 @@ module.exports = {
     'no-eq-null': 'error',
 
     // Variables
-    'no-undef':             'error',
     'no-use-before-define': ['error', 'nofunc'],
 
     // Stylistic Issues
