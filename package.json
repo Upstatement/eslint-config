@@ -21,14 +21,15 @@
     "twitter": "@upstatement"
   },
   "license": "ISC",
+  "homepage": "https://github.com/Upstatement/eslint-config",
   "bugs": {
     "url": "https://github.com/Upstatement/eslint-config/issues"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "eslint": "^5.2.0",
     "babel-eslint": "^8.2.6",
-    "eslint": "^5.1.0",
+    "prettier": "^1.13.7",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "prettier": "^1.13.7"
+    "eslint-plugin-prettier": "^2.6.2"
   }
 }
