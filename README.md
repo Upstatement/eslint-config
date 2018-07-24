@@ -12,7 +12,7 @@ npx install-peerdeps --dev @upstatement/eslint-config
 
 ## Usage
 
-Create an `.eslintrc` file in your project's root that extends Upstatement's configuration:
+Create an `.eslintrc` file at the root of your project that contains:
 
 ```json
 {
@@ -30,25 +30,27 @@ Just use this in your `.eslintrc` file instead:
 }
 ```
 
-## Editor Setup for Autosaving
+## Editor Integration
 
-### VS Code
+https://eslint.org/docs/user-guide/integrations#editors
 
-In your user settings (`Code` > `Preferences` > `Settings`) add:
+### Visual Studio Code
 
-```json
-editor.formatOnSave: true,
-eslint.autoFixOnSave: true,
-eslint.alwaysShowStatus: true,
-```
+1. Install ESLint extension: `View → Extensions` then find and install ESLint
+2. Reload the editor
+3. In your user settings `Code → Preferences → Settings` add `"eslint.autoFixOnSave": true`
 
-### Sublime Text
+### Sublime Text 3
 
-TBD
+1. Install [Package Control](https://packagecontrol.io/installation)
+2. Install [ESLint-Formatter](https://github.com/TheSavior/ESLint-Formatter)
+3. And then allow auto fix on save: `Preferences → Package Settings → ESLint Formatter → Settings` then add `"format_on_save": true` to the settings file
 
 ### Atom
 
-TBD
+1. Install [linter-eslint](https://github.com/AtomLinter/linter-eslint) plugin: `Preferences → Install` then type and install `linter-eslint`
+2. Install all dependencies (and restart the editor couple of times during installation)
+3. Enable auto fix on save: `Preferences → Packages → linter-eslint` then check `Fix errors on save checkbox`
 
 ## Pre-commit Hook
 
