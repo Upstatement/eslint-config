@@ -7,11 +7,8 @@ module.exports = {
   'parser': 'babel-eslint',
   'parserOptions': {
     'ecmaVersion': 2018,
-    'jsx': true
   },
   'env': {
-    'browser': true,
-    'node': true,
     'es6': true,
   },
   'rules': {

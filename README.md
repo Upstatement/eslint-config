@@ -1,12 +1,10 @@
 # eslint-config
 
-Upstatement's official [`eslint`](https://eslint.org/) configuration.
-
-[Configuring ESLint](https://eslint.org/docs/user-guide/configuring)
+Upstatement's base [`ESLint`](https://eslint.org/) configuration.
 
 ## Installation
 
-Install the package from [npm](https://www.npmjs.com/package/@upstatement/eslint-config) using `npm` or `yarn`:
+Requires **npm 5+**
 
 ```bash
 npx install-peerdeps --dev @upstatement/eslint-config
@@ -24,13 +22,11 @@ Create an `.eslintrc` file in your project's root that extends Upstatement's con
 
 ## Alternative 4 space config
 
-Never fear, ESLint supports [multiple configs](https://eslint.org/docs/developer-guide/shareable-configs#sharing-multiple-configs)!
-
 Just use this in your `.eslintrc` file instead:
 
 ```json
 {
-  "extends": "@upstatement/eslint-config/four-spaces-config"
+  "extends": "@upstatement/eslint-config/four-space-config"
 }
 ```
 
@@ -54,15 +50,35 @@ TBD
 
 TBD
 
-## How to publish to NPM
+## Pre-commit Hook
+
+As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged).
+
+1. `npm install --save-dev lint-staged husky`
+2. Update your `package.json` like this:
+
+```json
+{
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"]
+  }
+}
+```
+
+## How to publish to npm
 
 Read npm's docs on [How to Update a Package](https://docs.npmjs.com/getting-started/publishing-npm-packages#how-to-update-a-package).
 
 Essentially:
 
-  1. Make sure you're logged into Upstatement's npm account. `npm whoami` will tell you if you're already logged in. If not, type `npm login` and use our credentials from 1pass.
-  2. Update the package version: `npm version <update_type>` (`update_type` being patch, minor, or major. If you don't know which one to use, go read about [semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning)).
-  3. Publish it: `npm publish`
+1. `npm login`
+    * Make sure you're logged into Upstatement's npm account with the credentials from 1pass. `npm whoami` will tell you if you're already logged in.
+2. `npm version <update_type>`
+    * `update_type` can be `patch`, `minor`, or `major`. If you don't know which one to use, go read about [semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning).
+3. `npm publish`
 
 ## Enforced Rules
 
@@ -70,7 +86,7 @@ Upstatement's ESLint config extends `eslint:recommended` which enables rules tha
 
 The rules listed below are rules we have enabled on top of those enabled by `eslint:recommended`.
 
-- ### [`no-console`](https://eslint.org/docs/rules/no-console)
+* ### [`no-console`](https://eslint.org/docs/rules/no-console)
 
   It's perfectly fine to use `console.log` during development, but you shouldn't use `console.log` in production code. If you _really_ need to print something to the console, use `console.warn` or `console.error`.
 
@@ -85,7 +101,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   console.error('Log an error level message.');
   ```
 
-- ### [`curly`](https://eslint.org/docs/rules/curly)
+* ### [`curly`](https://eslint.org/docs/rules/curly)
 
   Always use curly braces.
 
@@ -94,9 +110,6 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   ```js
   // bad
   if (foo) foo++;
-
-  while (bar)
-    baz();
 
   if (foo) {
     baz();
@@ -107,25 +120,21 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
     foo++;
   }
 
-  while (bar) {
-    baz();
-  }
-
   if (foo) {
-      baz();
+    baz();
   } else {
     qux();
   }
   ```
 
-- ### [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
+* ### [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
 
   Use `===` and `!==` over `==` and `!=`.
 
   > Why? It's considered good practice to use the type-safe equality operators `===` and `!==` instead of their regular counterparts `==` and `!=`. The reason for this is that `==` and `!=` do type coercion which follows the rather obscure Abstract Equality Comparison Algorithm. For instance, the following statements are all considered true:
-  > - ### [] == false
-  > - ### [] == ![]
-   > - 3 == 03
+  > * [] == false
+  > * [] == ![]
+  > * 3 == 03
 
   TL;DR JavaScript is _**WILD**_
 
@@ -136,10 +145,6 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   bananas != 1
   value == undefined
   typeof foo == 'undefined'
-  'hello' != 'world'
-  0 == 0
-  true == true
-  foo == null
 
   // good
   a === b
@@ -147,13 +152,9 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   bananas !== 1
   value === undefined
   typeof foo === 'undefined'
-  'hello' !== 'world'
-  0 === 0
-  true === true
-  foo === null
   ```
 
-- ### [`no-eq-null`](https://eslint.org/docs/rules/no-eq-null)
+* ### [`no-eq-null`](https://eslint.org/docs/rules/no-eq-null)
 
   Don't write `null` comparisons without type-checking operators.
 
@@ -179,51 +180,31 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-- ### [`no-use-before-define`](https://eslint.org/docs/rules/no-use-before-define)
+* ### [`no-use-before-define`](https://eslint.org/docs/rules/no-use-before-define)
 
-  Don't use variables before they are defined.
+  Don't use constiables before they are defined.
 
-  > Why? In JavaScript, prior to ES6, variable and function declarations are hoisted to the top of a scope, so it’s possible to use identifiers before their formal declarations in code. This can be confusing and some believe it is best to always declare variables and functions before using them.
-  > In ES6, block-level bindings (`let` and `const`) introduce a “temporal dead zone” where a `ReferenceError` will be thrown with any attempt to access the variable before its declaration.
+  > Why? In JavaScript, prior to ES6, constiable and function declarations are hoisted to the top of a scope, so it’s possible to use identifiers before their formal declarations in code. This can be confusing and some believe it is best to always declare constiables and functions before using them.
+  > In ES6, block-level bindings (`let` and `const`) introduce a “temporal dead zone” where a `ReferenceError` will be thrown with any attempt to access the constiable before its declaration.
 
   ```js
   // bad
   alert(a);
-  var a = 10;
+  const a = 10;
 
   f();
   function f() {}
 
-  function g() {
-    return b;
-  }
-  var b = 1;
-
-  {
-    alert(c);
-    let c = 1;
-  }
-
   // good
-  var a;
+  let a;
   a = 10;
   alert(a);
 
   function f() {}
   f(1);
-
-  var b = 1;
-  function g() {
-    return b;
-  }
-
-  {
-    let c;
-    c++;
-  }
   ```
 
-- ### [`brace-style`](https://eslint.org/docs/rules/brace-style)
+* ### [`brace-style`](https://eslint.org/docs/rules/brace-style)
 
   Be consistent with brace style for blocks. Keep `else` on the same line as the preceding curly brace.
 
@@ -236,20 +217,15 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
     baz();
   }
 
-  if (foo) bar();
-  else if (baz) boom();
-
   // good
   if (foo) {
     bar();
   } else {
     baz();
   }
-
-  if (foo) { bar(); }
   ```
 
-- ### [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
+* ### [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
 
   Use trailing commas when possible.
 
@@ -257,118 +233,81 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  var foo = {
+  const foo = {
     bar: baz,
     qux: quux
   };
 
-  var foo = { bar: baz, qux: quux, };
-
-  var arr = [1,2,];
-
-  var arr = [1,
-    2,];
-
-  var arr = [
-    1,
-    2
-  ];
-
-  foo({
-    bar: baz,
-    qux: quux
-  });
+  const arr = [1,2,];
 
   // good
-  var foo = {
+  const foo = {
     bar: baz,
     qux: quux,
   };
 
-  var foo = {bar: baz, qux: quux};
-  var arr = [1,2];
-
-  var arr = [1,
-    2];
-
-  var arr = [
-    1,
-    2,
-  ];
-
-  foo({
-    bar: baz,
-    qux: quux,
-  });
+  const arr = [1,2];
   ```
 
-- ### [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
+* ### [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
 
   Put spaces after commas. Don't put spaces before commas.
 
   ```js
   // bad
-  var foo = 1 ,bar = 2;
-  var arr = [1 , 2];
-  var obj = {foo: bar ,baz: qur};
+  const foo = 1 ,bar = 2;
+  const arr = [1 , 2];
+  const obj = {foo: bar ,baz: qur};
   foo(a ,b);
-  new Foo(a ,b);
-  function foo(a ,b){}
-  a ,b
 
   // good
-  var foo = 1, bar = 2
-      , baz = 3;
-  var arr = [1, 2];
-  var arr = [1,, 3]
-  var obj = {foo: bar, baz: qur};
+  const foo = 1, bar = 2;
+  const arr = [1, 2];
+  const obj = {foo: bar, baz: qur};
   foo(a, b);
-  new Foo(a, b);
-  function foo(a, b){}
-  a, b
   ```
 
-- ### [`comma-style`](https://eslint.org/docs/rules/comma-style)
+* ### [`comma-style`](https://eslint.org/docs/rules/comma-style)
 
-  Commas should come after and on the same line as an array element, object property, or variable declaration.
+  Commas should come after and on the same line as an array element, object property, or constiable declaration.
 
   ```js
   // bad
-  var foo = 1
+  const foo = 1
   ,
   bar = 2;
 
-  var foo = 1
+  const foo = 1
     , bar = 2;
 
-  var foo = ['apples'
-            , 'oranges'];
+  const foo = ['apples'
+  , 'oranges'];
 
   function bar() {
     return {
-      a: 1
-      ,b: 2
+      'a': 1
+      ,'b': 2
     };
   }
 
   // good
-  var foo = 1, bar = 2;
+  const foo = 1, bar = 2;
 
-  var foo = 1,
-      bar = 2;
+  const foo = 1,
+        bar = 2;
 
-  var foo = ['apples',
-            'oranges'];
+  const foo = ['apples',
+              'oranges'];
 
   function bar() {
     return {
-      a: 1,
-      b: 2
+      'a': 1,
+      'b': 2
     };
   }
   ```
 
-- ### [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
+* ### [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
 
   Don't add a space between a function name and the opening parenthesis.
 
@@ -376,16 +315,11 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   // bad
   fn ();
 
-  fn
-  ();
-
   // good
   fn();
   ```
 
-- ### [`indent`](https://eslint.org/docs/rules/indent)
-
-  _**CONTROVERSAL!!!!!!!!!!**_
+* ### [`indent`](https://eslint.org/docs/rules/indent)
 
   Use 2-space indentation (or 4 spaces if using the four space config), multi-line property chains with 2 spaces, and indentation level for case clauses in `switch` statements.
 
@@ -415,20 +349,20 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
     .baz();
   ```
 
-- ### [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
+* ### [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
 
   Use consistent spacing between keys and values in object literals. Use a space after the colon and disallows a space before the colon.
 
   ```js
   // bad
-  var obj = { foo : 42 };
-  var obj = { foo:42 };
+  const obj = { foo : 42 };
+  const obj = { foo:42 };
 
   // good
-  var obj = { foo: 42 };
+  const obj = { foo: 42 };
   ```
 
-- ### [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
+* ### [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
 
   Use consistent spacing before and after keywords. Use at least one space before and after keywords.
 
@@ -452,101 +386,68 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-- ### [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
+* ### [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
 
   Use a space inside of braces (except `{}`)
 
   ```js
   // bad
-  var obj = {'foo': 'bar'};
-  var obj = {'foo': 'bar' };
-  var obj = { baz: {'foo': 'qux'}, bar};
-  var obj = {baz: { 'foo': 'qux' }, bar};
-  var obj = {'foo': 'bar'
-  };
-  var obj = {
+  const obj = {'foo': 'bar'};
+  const obj = {'foo': 'bar' };
+  const obj = {
     'foo':'bar'};
-  var {x} = y;
+  const {x} = y;
   import {foo } from 'bar';
 
   // good
-  var obj = {};
-  var obj = { 'foo': 'bar' };
-  var obj = { 'foo': { 'bar': 'baz' }, 'qux': 'quxx' };
-  var obj = {
+  const obj = {};
+  const obj = { 'foo': 'bar' };
+  const obj = {
     'foo': 'bar'
   };
-  var { x } = y;
+  const { x } = y;
   import { foo } from 'bar';
   ```
 
-- ### [`one-var`](https://eslint.org/docs/rules/one-var)
+* ### [`one-const`](https://eslint.org/docs/rules/one-const)
 
-  Use multiple variable declarations per scope.
+  Use multiple constiable declarations per scope.
 
-  > Why? It simplifies adding and removing variables, since only the lines you are modifying must be touched. It improves the clarity of diffs when a variable is added to a scope.
+  > Why? It simplifies adding and removing constiables, since only the lines you are modifying must be touched. It improves the clarity of diffs when a constiable is added to a scope.
 
   ```js
   // bad
   function foo() {
-    var bar,
+    let bar,
         baz;
     const bar = true,
         baz = false;
   }
 
-  function foo() {
-    var bar,
-        qux;
-
-    if (baz) {
-      qux = true;
-    }
-  }
-
-  function foo(){
-    let bar = true,
-        baz = false;
-  }
-
   // good
   function foo() {
-    var bar;
-    var baz;
-  }
-
-  function foo() {
-    var bar;
-
-    if (baz) {
-      var qux = true;
-    }
-  }
-
-  function foo() {
     let bar;
-
-    if (baz) {
-      let qux = true;
-    }
+    let baz;
+    const bar = true;
+    const baz = false;
   }
   ```
 
-- ### [`quotes`](https://eslint.org/docs/rules/quotes)
+* ### [`quotes`](https://eslint.org/docs/rules/quotes)
 
   Use single quotes wherever possible. Use backticks with template literals.
 
   ```js
   // bad
-  var double = double;
-  var unescaped = a string containing 'single' quotes;
+  const double = double;
+  const unescaped = a string containing 'single' quotes;
 
   // good
-  var single = 'single';
-  var backtick = `back${x}tick`;
+  const single = 'single';
+  const backtick = `back${x}tick`;
   ```
 
-- ### [`semi`](https://eslint.org/docs/rules/semi)
+* ### [`semi`](https://eslint.org/docs/rules/semi)
 
   Use semicolons at the end of statements.
 
@@ -554,7 +455,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  var name = 'ESLint'
+  const name = 'ESLint'
   let object = {}
 
   object.method = function() {
@@ -562,7 +463,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
 
   // good
-  var name = 'ESLint';
+  const name = 'ESLint';
   let object = {};
 
   object.method = function() {
@@ -570,7 +471,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   };
   ```
 
-- ### [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren)
+* ### [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren)
 
   Don't put a space before the `(` of arguments.
 
@@ -580,57 +481,21 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
     // ...
   }
 
-  var bar = function () {
+  const bar = function () {
     // ...
   };
-
-  var bar = function foo () {
-    // ...
-  };
-
-  class Foo {
-    constructor () {
-      // ...
-    }
-  }
-
-  var foo = {
-    bar () {
-      // ...
-    }
-  };
-
-  var foo = async () => 1
 
   // good
   function foo() {
     // ...
   }
 
-  var bar = function() {
+  const bar = function() {
     // ...
   };
-
-  var bar = function foo() {
-    // ...
-  };
-
-  class Foo {
-    constructor() {
-      // ...
-    }
-  }
-
-  var foo = {
-    bar() {
-      // ...
-    }
-  };
-
-  var foo = async() => 1
   ```
 
-- ### [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
+* ### [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
 
   Put spaces around infix operators.
 
@@ -640,29 +505,19 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   a+ b
 
-  a +b
-
   a?b:c
 
   const a={b:1};
-
-  var {a=0}=bar;
-
-  function foo(a=0) { }
 
   // good
   a + b
 
   a ? b : c
 
-  const a = {b:1};
-
-  var {a = 0} = bar;
-
-  function foo(a = 0) { }
+  const a = { b:1 };
   ```
 
-- ### [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+* ### [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
 
   Put spaces before and after an arrow function’s arrow.
 
@@ -672,10 +527,6 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   () =>{};
   (a)=> {};
   (a) =>{};
-  a =>a;
-  a=> a;
-  ()=> {'\n'};
-  () =>{'\n'};
 
   // good
   () => {};
@@ -684,7 +535,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   () => {'\n'};
   ```
 
-- ### [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
+* ### [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
 
   All imports from a single module should exist in a single import statement.
 
@@ -699,7 +550,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   import something from 'another-module';
   ```
 
-- ### [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
+* ### [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
 
   Don't include useless class constructors that can be safely removed without changing how the class works.
 
@@ -717,7 +568,6 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
 
   // good
-  class A { }
 
   class A {
     constructor () {
@@ -730,40 +580,34 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
       super('foo');
     }
   }
-
-  class A extends B {
-    constructor() {
-      super();
-      doSomething();
-    }
-  }
   ```
 
-- ### [`no-var`](https://eslint.org/docs/rules/no-var)
+* ### [`no-const`](https://eslint.org/docs/rules/no-const)
 
-  Use `let` or `const` instead of `var`.
+  Use `let` or `const` instead of `const`.
 
-  > Why? ECMAScript 6 allows programmers to create variables with block scope instead of function scope using the `let` and `const` keywords.
+  > Why? ECMAScript 6 allows programmers to create constiables with block scope instead of function scope using the `let` and `const` keywords.
 
   ```js
   // bad
-  var x = y;
-  var CONFIG = {};
+  const x = y;
+  const CONFIG = {};
 
   // good
   let x = y;
   const CONFIG = {};
   ```
 
-- ### [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
+* ### [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 
-  Use `const` instead of `let` when a variable is never reassigned.
+  Use `const` instead of `let` when a constiable is never reassigned.
 
-  > Why? If a variable is never reassigned, using the `const` declaration is better.
-  > `const` declaration tells readers, “this variable is never reassigned,” reducing cognitive load and improving maintainability.
+  > Why? If a constiable is never reassigned, using the `const` declaration is better.
+  > `const` declaration tells readers, “this constiable is never reassigned,” reducing cognitive load and improving maintainability.
 
   ```js
   // bad
+
   // it's initialized and never reassigned.
   let a = 3;
   console.log(a);
@@ -772,17 +616,8 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   a = 0;
   console.log(a);
 
-  // `i` is redefined (not reassigned) on each loop step.
-  for (let i in [1, 2, 3]) {
-    console.log(i);
-  }
-
-  // `a` is redefined (not reassigned) on each loop step.
-  for (let a of [1, 2, 3]) {
-    console.log(a);
-  }
-
   // good
+
   // it's reassigned after initialized.
   let a;
   a = 0;
@@ -792,37 +627,22 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   // it's initialized in a different block from the declaration.
   let a;
   if (true) {
-      a = 0;
+    a = 0;
   }
   console.log(a);
-
-  // it's initialized at a place that we cannot write a variable declaration.
-  let a;
-  if (true) a = 0;
-  console.log(a);
-
-  // `i` gets a new binding each iteration
-  for (const i in [1, 2, 3]) {
-    console.log(i);
-  }
-
-  // `a` gets a new binding each iteration
-  for (const a of [1, 2, 3]) {
-    console.log(a);
-  }
   ```
 
-- ### [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
+* ### [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
 
   Use template literals instead of string concatenation.
 
   ```js
   // bad
-  var str = Hello,  + name + !;
-  var str = Time:  + (12 * 60 * 60 * 1000);
+  const str = Hello,  + name + !;
+  const str = Time:  + (12 * 60 * 60 * 1000);
 
   // good
-  var str = Hello World!;
-  var str = `Hello, ${name}!`;
-  var str = `Time: ${12 * 60 * 60 * 1000}`;
+  const str = Hello World!;
+  const str = `Hello, ${name}!`;
+  const str = `Time: ${12 * 60 * 60 * 1000}`;
   ```
