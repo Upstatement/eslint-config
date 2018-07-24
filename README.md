@@ -30,9 +30,7 @@ Just use this in your `.eslintrc` file instead:
 }
 ```
 
-## Editor Integration
-
-https://eslint.org/docs/user-guide/integrations#editors
+## [Editor Integration](https://eslint.org/docs/user-guide/integrations#editors)
 
 ### Visual Studio Code
 
