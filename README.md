@@ -20,14 +20,30 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-## Alternative 4 space config
+## Four space config
 
-Just use this in your `.eslintrc` file instead:
+Use this in your `.eslintrc` file:
 
 ```json
 {
   "extends": "@upstatement/eslint-config/four-space-config"
 }
+```
+
+## React config
+
+Use this in your `.eslintrc` file:
+
+```json
+{
+  "extends": "@upstatement/eslint-config/react"
+}
+```
+
+In addition to hte `npx` install command above, you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react).
+
+```bash
+npm install --save-dev eslint-plugin-react
 ```
 
 ## [Editor Integration](https://eslint.org/docs/user-guide/integrations#editors)
