@@ -44,7 +44,7 @@ Use this in your `.eslintrc` file:
 }
 ```
 
-In addition to hte `npx` install command above, you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react).
+In addition to installing this module with the `npx` command above, you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react).
 
 ```bash
 npm install --save-dev eslint-plugin-react
