@@ -22,6 +22,8 @@ Create an `.eslintrc` file at the root of your project that contains:
 
 ## Four space config
 
+This includes everything in the base config, but replaces the 2 space indent rule with 4 spaces.
+
 Use this in your `.eslintrc` file:
 
 ```json
@@ -31,6 +33,8 @@ Use this in your `.eslintrc` file:
 ```
 
 ## React config
+
+This includes everything in the base config, plus some extra react linting goodies.
 
 Use this in your `.eslintrc` file:
 
