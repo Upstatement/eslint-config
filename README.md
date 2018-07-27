@@ -20,7 +20,9 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-## Four space config
+**Note:** Our default config purposefully does not specify a certain environment as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`.
+
+### Four space config
 
 This includes everything in the base config, but replaces the 2 space indent rule with 4 spaces.
 
@@ -28,11 +30,11 @@ Use this in your `.eslintrc` file:
 
 ```json
 {
-  "extends": "@upstatement/eslint-config/four-space-config"
+  "extends": "@upstatement/eslint-config/four-spaces"
 }
 ```
 
-## React config
+### React config
 
 This includes everything in the base config, plus some extra react linting goodies.
 
@@ -341,7 +343,9 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
 * ### [`indent`](https://eslint.org/docs/rules/indent)
 
-  Use 2-space indentation (or 4 spaces if using the four space config), multi-line property chains with 2 spaces, and indentation level for case clauses in `switch` statements.
+  This ESLint config defaults to 2 space indentation.
+
+  > Why? The general convention within the JavaScript community is 2 spaces, and ESLint is a "pluggable linting utility for JavaScript and JSX". We could debate 2 spaces vs 4 spaces all day long, so that's why we've provided another configuration for 4 spaces.
 
   ```js
   // bad
