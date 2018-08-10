@@ -7,7 +7,26 @@ Upstatement's base [`ESLint`](https://eslint.org/) configuration.
 Requires **npm 5+**
 
 ```bash
-npx install-peerdeps --dev @upstatement/eslint-config
+npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
+```
+
+**Note:** `--auth $NPM_TOKEN` is only needed while this module is private.
+
+To get an `NPM_TOKEN`, log into npm via your command line
+
+1. `npm login`
+2. Use the upstatementeng credentials from 1pass
+3. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
+
+
+## Use a postinstall script to install
+
+If you want to simply run `npm install` to install this module, add this to your `package.json`
+
+```json
+"scripts": {
+  "postinstall": "npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN",
+},
 ```
 
 ## Usage
