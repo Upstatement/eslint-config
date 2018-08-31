@@ -116,8 +116,6 @@ As another line of defense, if you want ESLint to automatically fix your errors 
 
 Read npm's docs on [How to Update a Package](https://docs.npmjs.com/getting-started/publishing-npm-packages#how-to-update-a-package).
 
-Essentially:
-
 1. `npm login`
     * Make sure you're logged into Upstatement's npm account with the credentials from 1pass. `npm whoami` will tell you if you're already logged in.
 2. `npm version <update_type>`
