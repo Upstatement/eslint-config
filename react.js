@@ -13,5 +13,8 @@ module.exports = {
     'browser': true,
     'node': true,
     'es6': true,
+  },
+  'rules': {
+    'react/no-unescaped-entities': ['error', { 'forbid': ['>', '\'', '}'] }]
   }
 }

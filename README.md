@@ -35,7 +35,7 @@ To get an `NPM_TOKEN`
 
 We export three ESLint configurations for your usage:
 
-1. [Default (2 spaces)](#default-config)
+1. [Default (2 space)](#default-config)
 2. [Four Space](#four-space-config)
 3. [React](#react-config)
 
@@ -76,7 +76,7 @@ Use this in your `.eslintrc` file:
 
 ### React Config
 
-This includes everything in the base config, plus some extra react linting goodies.
+This includes everything in the default config, plus some extra react linting goodies.
 
 Use this in your `.eslintrc` file:
 
@@ -86,9 +86,9 @@ Use this in your `.eslintrc` file:
 }
 ```
 
-In addition to installing this module with the `npx` command above, you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react).
+In addition to installing this module with the [instructions above](#installation), you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react).
 
-```bash
+```sh
 npm install --save-dev eslint-plugin-react
 ```
 
