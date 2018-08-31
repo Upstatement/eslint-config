@@ -4,30 +4,33 @@ Upstatement's base [`ESLint`](https://eslint.org/) configuration.
 
 ## Installation
 
+This package has several [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies). Run `npm info "eslint-config-airbnb-base@latest" peerDependencies` to list the peer dependencies and versions.
+
+### With `npx`
+
 Requires **npm 5+**
 
-```bash
-npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
-```
+  ```sh
+  npx install-peerdeps @upstatement/eslint-config --dev
+  ```
 
-**Note:** `--auth $NPM_TOKEN` is only needed while this module is private.
+### Without `npx`
+
+  ```sh
+  npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-prettier
+  ```
+
+### If this package is private
+
+  ```sh
+  npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
+  ```
 
 To get an `NPM_TOKEN`, log into npm via your command line
 
 1. `npm login`
 2. Use the upstatementeng credentials from 1pass
 3. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
-
-
-## Use a postinstall script to install
-
-If you want to simply run `npm install` to install this module, add this to your `package.json`
-
-```json
-"scripts": {
-  "postinstall": "npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN",
-},
-```
 
 ## Usage
 
