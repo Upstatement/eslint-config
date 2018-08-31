@@ -8,29 +8,27 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
 
 ### With `npx`
 
-Requires **npm 5+**
+  Requires **npm 5+**
+
+    ```sh
+    npx install-peerdeps @upstatement/eslint-config --dev
+    ```
+
+#### If this package is private
 
   ```sh
-  npx install-peerdeps @upstatement/eslint-config --dev
+  npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
   ```
+
+To get an `NPM_TOKEN`
+1. `npm login` with the `upstatementeng` credentials from 1pass
+2. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
 
 ### Without `npx`
 
   ```sh
   npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-prettier
   ```
-
-### If this package is private
-
-  ```sh
-  npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
-  ```
-
-To get an `NPM_TOKEN`, log into npm via your command line
-
-1. `npm login`
-2. Use the upstatementeng credentials from 1pass
-3. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
 
 ## Usage
 
@@ -42,9 +40,9 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-**Note:** Our default config purposefully does not specify a certain environment as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`.
+❗️ **Note:** Our default config purposefully does not specify a certain environment as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`.
 
-### Four space config
+### 4️⃣ Space Config
 
 This includes everything in the base config, but replaces the 2 space indent rule with 4 spaces.
 
@@ -56,7 +54,7 @@ Use this in your `.eslintrc` file:
 }
 ```
 
-### React config
+### ⚛️ React config
 
 This includes everything in the base config, plus some extra react linting goodies.
 
