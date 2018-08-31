@@ -10,9 +10,9 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
 
   Requires **npm 5+**
 
-    ```sh
-    npx install-peerdeps @upstatement/eslint-config --dev
-    ```
+  ```sh
+  npx install-peerdeps @upstatement/eslint-config --dev
+  ```
 
 #### If this package is private
 
@@ -21,6 +21,7 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
   ```
 
 To get an `NPM_TOKEN`
+
 1. `npm login` with the `upstatementeng` credentials from 1pass
 2. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
 
@@ -32,6 +33,14 @@ To get an `NPM_TOKEN`
 
 ## Usage
 
+We export three ESLint configurations for your usage:
+
+1. [Default (2 spaces)](#default-config)
+2. [Four Space](#four-space-config)
+3. [React](#react-config)
+
+### Default Config
+
 Create an `.eslintrc` file at the root of your project that contains:
 
 ```json
@@ -40,9 +49,20 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-❗️ **Note:** Our default config purposefully does not specify a certain environment as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`.
+❗️ **Note:** Our default config purposefully does not specify a certain environment as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`. For example:
 
-### 4️⃣ Space Config
+```json
+{
+  "extends": "@upstatement",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+  }
+}
+```
+
+### Four Space Config
 
 This includes everything in the base config, but replaces the 2 space indent rule with 4 spaces.
 
@@ -54,7 +74,7 @@ Use this in your `.eslintrc` file:
 }
 ```
 
-### ⚛️ React config
+### React Config
 
 This includes everything in the base config, plus some extra react linting goodies.
 
