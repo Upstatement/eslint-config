@@ -1,6 +1,6 @@
 # eslint-config
 
-Upstatement's base [`ESLint`](https://eslint.org/) configuration.
+Upstatement's [`ESLint`](https://eslint.org/) configuration.
 
 ## Installation
 
@@ -14,16 +14,14 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
   npx install-peerdeps @upstatement/eslint-config --dev
   ```
 
-#### If this package is private
+  If this package is private, you'll need to get an npm token.
+
+  1. `npm login` with the `upstatementeng` credentials from 1pass
+  2. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
 
   ```sh
   npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
   ```
-
-To get an `NPM_TOKEN`
-
-1. `npm login` with the `upstatementeng` credentials from 1pass
-2. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
 
 ### Without `npx`
 
@@ -64,7 +62,7 @@ Create an `.eslintrc` file at the root of your project that contains:
 
 ### Four Space Config
 
-This includes everything in the base config, but replaces the 2 space indent rule with 4 spaces.
+This includes everything in the default config, but replaces the 2 space indent rule with 4 spaces.
 
 Use this in your `.eslintrc` file:
 
