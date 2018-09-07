@@ -47,7 +47,7 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-❗️ **Note:** Our default config purposefully does not specify a certain environment as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`. For example:
+❗️ **Note:** Our default config purposefully does not specify a certain [environment](https://eslint.org/docs/user-guide/configuring#specifying-environments) as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`. For example:
 
 ```json
 {
