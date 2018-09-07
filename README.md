@@ -112,7 +112,7 @@ npm install --save-dev eslint-plugin-react
 
 ## Pre-commit Hook
 
-As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged).
+As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky), which manage git hooks.
 
 1. `npm install --save-dev lint-staged husky`
 2. Update your `package.json` like this:
