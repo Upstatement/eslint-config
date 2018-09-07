@@ -4,7 +4,7 @@ Upstatement's [`ESLint`](https://eslint.org/) configuration.
 
 ## Installation
 
-This package has several [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies). Run `npm info "eslint-config-airbnb-base@latest" peerDependencies` to list the peer dependencies and versions.
+This package has several [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies). Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
 
 ### With `npx`
 
@@ -14,7 +14,7 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
   npx install-peerdeps @upstatement/eslint-config --dev
   ```
 
-  If this package is private, you'll need to get an npm token.
+  ️🔑 **Note:** If this package is private, you'll need an npm token.
 
   1. `npm login` with the `upstatementeng` credentials from 1pass
   2. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
@@ -34,7 +34,7 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
 We export three ESLint configurations for your usage:
 
 1. [Default (2 space)](#default-config)
-2. [Four Space](#four-space-config)
+2. [Four Spaces](#four-spaces-config)
 3. [React](#react-config)
 
 ### Default Config
@@ -60,9 +60,9 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-### Four Space Config
+### Four Spaces Config
 
-This includes everything in the default config, but replaces the 2 space indent rule with 4 spaces.
+This includes everything in the default config, but replaces the indent rule with 4 spaces instead of 2 spaces.
 
 Use this in your `.eslintrc` file:
 
@@ -74,7 +74,7 @@ Use this in your `.eslintrc` file:
 
 ### React Config
 
-This includes everything in the default config, plus some extra react linting goodies.
+This includes everything in the default config, plus some extra react linting.
 
 Use this in your `.eslintrc` file:
 
