@@ -14,15 +14,6 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
   npx install-peerdeps @upstatement/eslint-config --dev
   ```
 
-  ️🔑 **Note:** If this package is private, you'll need an npm token.
-
-  1. `npm login` with the `upstatementeng` credentials from 1pass
-  2. Follow the steps from Part 4 of this [guide](https://medium.com/@oscargodson/npm-private-modules-with-heroku-25a171ce022e)
-
-  ```sh
-  npx install-peerdeps @upstatement/eslint-config --dev --auth $NPM_TOKEN
-  ```
-
 ### Without `npx`
 
   ```sh
