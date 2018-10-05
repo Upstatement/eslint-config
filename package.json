@@ -1,6 +1,6 @@
 {
   "name": "@upstatement/eslint-config",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Upstatement's default ESLint configuration",
   "main": "index.js",
   "repository": {
@@ -25,10 +25,10 @@
     "url": "https://github.com/Upstatement/eslint-config/issues"
   },
   "peerDependencies": {
-    "eslint": "^5.2.0",
-    "babel-eslint": "^8.2.6",
-    "prettier": "^1.13.7",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2"
+    "eslint": "^5.x.x",
+    "babel-eslint": "^10.x.x",
+    "prettier": "^1.x.x",
+    "eslint-config-prettier": "^3.x.x",
+    "eslint-plugin-prettier": "^3.x.x"
   }
 }

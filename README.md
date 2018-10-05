@@ -4,13 +4,15 @@
 
 Upstatement's [`ESLint`](https://eslint.org/) configuration.
 
+Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@upstatement/prettier-config).
+
 ## Installation
 
 This package has several [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies). Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
 
 ### With `npx`
 
-  Requires **npm 5+**
+  Requires **npm 5.2+ and higher**
 
   ```sh
   npx install-peerdeps @upstatement/eslint-config --dev
@@ -137,7 +139,7 @@ Upstatement's ESLint config extends `eslint:recommended` which enables rules tha
 
 The rules listed below are rules we have enabled on top of those enabled by `eslint:recommended`.
 
-* ### [`no-console`](https://eslint.org/docs/rules/no-console)
+* [`no-console`](https://eslint.org/docs/rules/no-console)
 
   It's perfectly fine to use `console.log` during development, but you shouldn't use `console.log` in production code. If you _really_ need to print something to the console, use `console.warn` or `console.error`.
 
@@ -152,7 +154,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   console.error('Log an error level message.');
   ```
 
-* ### [`curly`](https://eslint.org/docs/rules/curly)
+* [`curly`](https://eslint.org/docs/rules/curly)
 
   Always use curly braces.
 
@@ -178,7 +180,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
+* [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
 
   Use `===` and `!==` over `==` and `!=`.
 
@@ -205,7 +207,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   typeof foo === 'undefined'
   ```
 
-* ### [`no-eq-null`](https://eslint.org/docs/rules/no-eq-null)
+* [`no-eq-null`](https://eslint.org/docs/rules/no-eq-null)
 
   Don't write `null` comparisons without type-checking operators.
 
@@ -231,7 +233,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`no-use-before-define`](https://eslint.org/docs/rules/no-use-before-define)
+* [`no-use-before-define`](https://eslint.org/docs/rules/no-use-before-define)
 
   Don't use constiables before they are defined.
 
@@ -255,7 +257,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   f(1);
   ```
 
-* ### [`brace-style`](https://eslint.org/docs/rules/brace-style)
+* [`brace-style`](https://eslint.org/docs/rules/brace-style)
 
   Be consistent with brace style for blocks. Keep `else` on the same line as the preceding curly brace.
 
@@ -276,7 +278,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
+* [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
 
   Use trailing commas when possible.
 
@@ -300,7 +302,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const arr = [1,2];
   ```
 
-* ### [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
+* [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
 
   Put spaces after commas. Don't put spaces before commas.
 
@@ -318,7 +320,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   foo(a, b);
   ```
 
-* ### [`comma-style`](https://eslint.org/docs/rules/comma-style)
+* [`comma-style`](https://eslint.org/docs/rules/comma-style)
 
   Commas should come after and on the same line as an array element, object property, or constiable declaration.
 
@@ -358,7 +360,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
+* [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
 
   Don't add a space between a function name and the opening parenthesis.
 
@@ -370,7 +372,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   fn();
   ```
 
-* ### [`indent`](https://eslint.org/docs/rules/indent)
+* [`indent`](https://eslint.org/docs/rules/indent)
 
   This ESLint config defaults to 2 space indentation.
 
@@ -402,7 +404,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
     .baz();
   ```
 
-* ### [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
+* [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
 
   Use consistent spacing between keys and values in object literals. Use a space after the colon and disallows a space before the colon.
 
@@ -415,7 +417,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const obj = { foo: 42 };
   ```
 
-* ### [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
+* [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
 
   Use consistent spacing before and after keywords. Use at least one space before and after keywords.
 
@@ -439,7 +441,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
+* [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
 
   Use a space inside of braces (except `{}`)
 
@@ -462,7 +464,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   import { foo } from 'bar';
   ```
 
-* ### [`one-const`](https://eslint.org/docs/rules/one-const)
+* [`one-const`](https://eslint.org/docs/rules/one-const)
 
   Use multiple constiable declarations per scope.
 
@@ -486,7 +488,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`quotes`](https://eslint.org/docs/rules/quotes)
+* [`quotes`](https://eslint.org/docs/rules/quotes)
 
   Use single quotes wherever possible. Use backticks with template literals.
 
@@ -500,7 +502,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const backtick = `back${x}tick`;
   ```
 
-* ### [`semi`](https://eslint.org/docs/rules/semi)
+* [`semi`](https://eslint.org/docs/rules/semi)
 
   Use semicolons at the end of statements.
 
@@ -524,7 +526,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   };
   ```
 
-* ### [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren)
+* [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren)
 
   Don't put a space before the `(` of arguments.
 
@@ -548,7 +550,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   };
   ```
 
-* ### [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
+* [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
 
   Put spaces around infix operators.
 
@@ -570,7 +572,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const a = { b:1 };
   ```
 
-* ### [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+* [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
 
   Put spaces before and after an arrow function’s arrow.
 
@@ -588,7 +590,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   () => {'\n'};
   ```
 
-* ### [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
+* [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
 
   All imports from a single module should exist in a single import statement.
 
@@ -603,7 +605,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   import something from 'another-module';
   ```
 
-* ### [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
+* [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
 
   Don't include useless class constructors that can be safely removed without changing how the class works.
 
@@ -635,7 +637,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-* ### [`no-const`](https://eslint.org/docs/rules/no-const)
+* [`no-const`](https://eslint.org/docs/rules/no-const)
 
   Use `let` or `const` instead of `const`.
 
@@ -651,7 +653,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const CONFIG = {};
   ```
 
-* ### [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
+* [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 
   Use `const` instead of `let` when a constiable is never reassigned.
 
@@ -685,7 +687,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   console.log(a);
   ```
 
-* ### [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
+* [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
 
   Use template literals instead of string concatenation.
 
