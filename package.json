@@ -28,7 +28,6 @@
     "eslint": "^5.x.x",
     "babel-eslint": "^10.x.x",
     "prettier": "^1.x.x",
-    "eslint-config-prettier": "^3.x.x",
-    "eslint-plugin-prettier": "^3.x.x"
+    "eslint-config-prettier": "^3.x.x"
   }
 }

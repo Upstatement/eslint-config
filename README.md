@@ -23,13 +23,13 @@ This package has several [peerDependencies](https://docs.npmjs.com/files/package
 #### npm
 
 ```sh
-npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-prettier
+npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
 ```
 
 #### yarn
 
 ```sh
-yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-prettier
+yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
 ```
 
 ## Usage
