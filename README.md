@@ -122,11 +122,16 @@ As another line of defense, if you want ESLint to automatically fix your errors 
 
 ```json
 {
-  "scripts": {
-    "precommit": "lint-staged"
-  },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+    }
   }
 }
 ```
