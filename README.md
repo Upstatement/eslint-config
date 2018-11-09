@@ -87,10 +87,18 @@ Use this in your `.eslintrc` file:
 }
 ```
 
-In addition to installing this module with the [instructions above](#installation), you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react).
+In addition to installing this module with the [instructions above](#installation), you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react) and [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y) .
+
+#### With npm
 
 ```sh
-npm install --save-dev eslint-plugin-react
+npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
+```
+
+#### With yarn
+
+```sh
+yarn add --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
 ```
 
 ## [Editor Integration](https://eslint.org/docs/user-guide/integrations#editors)
