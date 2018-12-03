@@ -34,7 +34,11 @@ module.exports = {
     'one-var':                      ['error', 'never'],
     'quotes':                       ['error', 'single', { 'allowTemplateLiterals': true }],
     'semi':                         ['error', 'always'],
-    'space-before-function-paren':  ['error', 'never'],
+    'space-before-function-paren':  ['error', {
+      'anonymous': 'never',
+      'named': 'never',
+      'asyncArrow': 'always'
+    }],
     'space-infix-ops':              'error',
 
     // ECMAScript 6
