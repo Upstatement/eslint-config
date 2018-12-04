@@ -77,7 +77,7 @@ Use this in your `.eslintrc` file:
 
 ### React Config
 
-This includes everything in the default config, plus some extra react linting.
+This includes everything in the default config, plus some extra react and JSX linting.
 
 Use this in your `.eslintrc` file:
 
@@ -151,7 +151,7 @@ Read npm's docs on [How to Update a Package](https://docs.npmjs.com/getting-star
 1. `npm login`
     * Make sure you're logged into Upstatement's npm account with the credentials from 1pass. `npm whoami` will tell you if you're already logged in.
 2. `npm version <update_type>`
-    * `update_type` can be `patch`, `minor`, or `major`. If you don't know which one to use, go read about [semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning).
+    * `update_type` can be `patch`, `minor`, or `major`. If you don't know which one to use, read up about [semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning).
 3. `npm publish`
 
 ## Enforced Rules
