@@ -39,6 +39,7 @@ We export three ESLint configurations for your usage:
 1. [Default (2 space)](#default-config)
 2. [Four Spaces](#four-spaces-config)
 3. [React](#react-config)
+4. [Vue](#vue-config)
 
 ### Default Config
 
@@ -95,6 +96,28 @@ npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
 or
 
 yarn add --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
+```
+
+### Vue Config
+
+This includes everything in the default config, plus some Vue linting.
+
+Use this in your `.eslintrc` file:
+
+```json
+{
+  "extends": "@upstatement/eslint-config/vue"
+}
+```
+
+In addition to installing this module with the [instructions above](#installation), you will also need to install [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue) and [`vue-eslint-parser`](https://github.com/mysticatea/vue-eslint-parser).
+
+```sh
+npm install --save-dev eslint-plugin-vue vue-eslint-parser
+
+or
+
+yarn add --save-dev eslint-plugin-vue vue-eslint-parser
 ```
 
 ## [Editor Integration](https://eslint.org/docs/user-guide/integrations#editors)
