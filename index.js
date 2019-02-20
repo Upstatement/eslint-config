@@ -42,6 +42,8 @@ module.exports = {
     "space-infix-ops":              "error",
 
     // ECMAScript 6
+    "arrow-body-style":       ["error", "as-needed"],
+    "arrow-parens":           ["error", "as-needed"],
     "arrow-spacing":          "error",
     "no-duplicate-imports":   "error",
     "no-useless-constructor": "error",
