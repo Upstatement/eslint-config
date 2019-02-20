@@ -303,7 +303,8 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   // bad
   if (foo) {
     bar();
-  } else {
+  }
+  else {
     baz();
   }
 
@@ -325,7 +326,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   // bad
   const foo = {
     bar: baz,
-    qux: quux,
+    qux: quux
   };
 
   const arr = [1, 2];
@@ -347,9 +348,9 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   // bad
   const foo = 1,
     bar = 2;
-  const arr = [1, 2];
-  const obj = { foo: bar, baz: qur };
-  foo(a, b);
+  const arr = [1,2];
+  const obj = { foo: bar,baz: qur };
+  foo(a,b);
 
   // good
   const foo = 1,
@@ -365,25 +366,23 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  const foo = 1,
-    bar = 2;
+  const foo = 1
+    ,bar = 2;
 
-  const foo = 1,
-    bar = 2;
+  const foo = 1
+    ,bar = 2;
 
-  const foo = ['apples', 'oranges'];
+  const foo = ['apples'
+               , 'oranges'];
 
   function bar() {
     return {
-      a: 1,
-      b: 2,
+      a: 1
+      ,b: 2,
     };
   }
 
   // good
-  const foo = 1,
-    bar = 2;
-
   const foo = 1,
     bar = 2;
 
@@ -403,7 +402,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  fn();
+  fn ();
 
   // good
   fn();
@@ -418,13 +417,11 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   ```js
   // bad
   if (a) {
-    b = c;
-    function foo(d) {
-      e = f;
-    }
+      b = c;
+      function foo(d) {
+          e = f;
+      }
   }
-
-  foo.bar.baz();
 
   // good
   if (a) {
@@ -433,8 +430,6 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
       e = f;
     }
   }
-
-  foo.bar.baz();
   ```
 
 - [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
@@ -443,8 +438,8 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  const obj = { foo: 42 };
-  const obj = { foo: 42 };
+  const obj = {foo: 42};
+  const obj = {foo: 42 };
 
   // good
   const obj = { foo: 42 };
@@ -456,11 +451,11 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  if (foo) {
+  if(foo) {
     //...
-  } else if (bar) {
+  }else if(bar) {
     //...
-  } else {
+  } else{
     //...
   }
 
@@ -480,13 +475,12 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  const obj = { foo: 'bar' };
-  const obj = { foo: 'bar' };
-  const obj = {
-    foo: 'bar',
+  const obj = {foo: 'bar'};
+  const obj = { foo: 'bar'};
+  const obj = {foo: 'bar',
   };
-  const { x } = y;
-  import { foo } from 'bar';
+  const {x} = y;
+  import {foo } from 'bar';
 
   // good
   const obj = {};
@@ -528,7 +522,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   ```js
   // bad
   const double = double;
-  const unescaped = a string containing 'single' quotes;
+  const unescaped = 'a string containing "double" quotes';
 
   // good
   const single = 'single';
@@ -543,12 +537,12 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  const name = 'ESLint';
-  let object = {};
+  const name = 'ESLint'
+  let object = {}
 
   object.method = function() {
     // ...
-  };
+  }
 
   // good
   const name = 'ESLint';
@@ -565,11 +559,11 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  function foo() {
+  function foo () {
     // ...
   }
 
-  const bar = function() {
+  const bar = function () {
     // ...
   };
 
@@ -589,13 +583,13 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  a + b;
+  a+b;
 
-  a + b;
+  a+ b;
 
-  a ? b : c;
+  a?b : c;
 
-  const a = { b: 1 };
+  const a ={ b: 1 };
 
   // good
   a + b;
@@ -605,16 +599,71 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const a = { b: 1 };
   ```
 
+- [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
+
+  Disallow the use of braces around arrow function body as needed. One-liners can be more readable!
+
+  ```js
+  // bad
+  let foo = () => {
+    return 0;
+  };
+  let foo = () => {
+      return {
+         bar: {
+              foo: 1,
+              bar: 2,
+          }
+      };
+  };
+
+
+  // good
+  let foo = () => 0;
+  let foo = (retv, name) => {
+      retv[name] = true;
+      return retv;
+  };
+  let foo = () => ({
+      bar: {
+          foo: 1,
+          bar: 2,
+      }
+  });
+  ```
+
+- [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
+
+  Omit parens when there is only one argument. Unnecessary parens make code less readable.
+
+  ```js
+  // bad
+  (a) => {};
+  (a) => a;
+  (a) => {'\n'};
+  a.then((foo) => {});
+  a.then((foo) => a);
+  a((foo) => { if (true) {} });
+
+  // good
+  () => {};
+  a => {};
+  a => a;
+  () => {
+    '\n';
+  };
+  ```
+
 - [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
 
   Put spaces before and after an arrow function’s arrow.
 
   ```js
   // bad
-  () => {};
-  () => {};
-  a => {};
-  a => {};
+  ()=> {};
+  () =>{};
+  a=> {};
+  a=>{};
 
   // good
   () => {};
@@ -671,16 +720,16 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   }
   ```
 
-- [`no-const`](https://eslint.org/docs/rules/no-const)
+- [`no-var`](https://eslint.org/docs/rules/no-var)
 
-  Use `let` or `const` instead of `const`.
+  Use `let` or `const` instead of `var`.
 
   > Why? ECMAScript 6 allows programmers to create constiables with block scope instead of function scope using the `let` and `const` keywords.
 
   ```js
   // bad
-  const x = y;
-  const CONFIG = {};
+  var x = y;
+  var CONFIG = {};
 
   // good
   let x = y;
@@ -727,11 +776,11 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 
   ```js
   // bad
-  const str = Hello,  + name + !;
-  const str = Time:  + (12 * 60 * 60 * 1000);
+  const str = 'Hello,' + name + '!';
+  const str = 'Time: ' + (12 * 60 * 60 * 1000);
 
   // good
-  const str = Hello World!;
+  const str = 'Hello World!';
   const str = `Hello, ${name}!`;
   const str = `Time: ${12 * 60 * 60 * 1000}`;
   ```
