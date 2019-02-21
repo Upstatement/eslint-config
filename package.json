@@ -1,6 +1,6 @@
 {
   "name": "@upstatement/eslint-config",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Upstatement's default ESLint configuration",
   "main": "index.js",
   "repository": {
