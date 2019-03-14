@@ -6,35 +6,52 @@ Upstatement's [`ESLint`](https://eslint.org/) configuration.
 
 Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@upstatement/prettier-config).
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Configurations](#configurations)
+  - [Default Config](#default-config)
+  - [Four Spaces Config](#four-spaces-config)
+  - [React Config](#react-config)
+  - [Vue Config](#vue-config)
+- [Editor Integration & Autoformatting](#editor-integration-&-autoformatting)
+- [Pre-commit Hook](#pre-commit-hook)
+- [Publishing to npm](#publishing-to-npm)
+- [Enforced Rules](#enforced-rules)
+- [Overriding Rules](#overriding-rules)
+
 ## Installation
 
 This package has several [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies). Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
 
-### With `npx`
+1. Install all dependencies
 
-Requires **npm 5.2+ and higher**
+    ```sh
+    # Requires npm 5.2+ and higher
+    npx install-peerdeps --dev @upstatement/eslint-config
+    ```
 
-```sh
-npx install-peerdeps @upstatement/eslint-config --dev
-```
+    Or without `npx`
 
-### Without `npx`
+    ```sh
+    npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
 
-#### npm
+    # or
 
-```sh
-npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
-```
+    yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+    ```
 
-#### yarn
+1. Create an `.eslintrc` file at the root of your project with the following:
 
-```sh
-yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
-```
+    ```json
+    {
+      "extends": "@upstatement"
+    }
+    ```
 
-## Usage
+## Configurations
 
-We export three ESLint configurations for your usage:
+We export four ESLint configurations for your usage:
 
 1. [Default (2 space)](#default-config)
 2. [Four Spaces](#four-spaces-config)
@@ -43,7 +60,7 @@ We export three ESLint configurations for your usage:
 
 ### Default Config
 
-Create an `.eslintrc` file at the root of your project that contains:
+**In your `.eslintrc`**
 
 ```json
 {
@@ -51,7 +68,69 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-❗️ **Note:** Our default config purposefully does not specify a certain [environment](https://eslint.org/docs/user-guide/configuring#specifying-environments) as to not make any assumptions about your project. You should specify these yourself in your project's `.eslintrc`. For example:
+> **NOTE:** Make sure to [specify your environment](#specifying-environments) based on your project
+
+### Four Spaces Config
+
+Includes everything in the default config, but replaces the indent rule with 4 spaces instead of 2 spaces.
+
+**In your `.eslintrc`**
+
+```json
+{
+  "extends": "@upstatement/eslint-config/four-spaces"
+}
+```
+
+> **NOTE:** Make sure to [specify your environment](#specifying-environments) based on your project
+
+### React Config
+
+Includes everything in the default config, plus environment specification and react-specific rules with
+
+- [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react)
+- [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+
+**Installation**
+
+```sh
+npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-jsx-a11y
+```
+
+**In your `.eslintrc`**
+
+```json
+{
+  "extends": "@upstatement/eslint-config/react"
+}
+```
+
+### Vue Config
+
+Includes everything in the default config, plus environment specification and vue-specific rules with
+
+- [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue)
+- [`vue-eslint-parser`](https://github.com/mysticatea/vue-eslint-parser)
+
+**Installation**
+
+```sh
+npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-vue vue-eslint-parser
+```
+
+**In your `.eslintrc`**
+
+```json
+{
+  "extends": "@upstatement/eslint-config/vue"
+}
+```
+
+## Specifying Environments
+
+Our default & four spaces configs purposefully do not specify a certain environment as to not make any assumptions about your project.
+
+You should specify these yourself in your project's ESLint config. For example:
 
 ```json
 {
@@ -64,71 +143,41 @@ Create an `.eslintrc` file at the root of your project that contains:
 }
 ```
 
-### Four Spaces Config
+View all available environments in the [ESLint Docs](https://eslint.org/docs/user-guide/configuring#specifying-environments)
 
-This includes everything in the default config, but replaces the indent rule with 4 spaces instead of 2 spaces.
+## Editor Integration & Autoformatting
 
-Use this in your `.eslintrc` file:
+Once you've installed the config, you probably want your editor to lint and fix your code for you.
 
-```json
-{
-  "extends": "@upstatement/eslint-config/four-spaces"
-}
-```
+### VS Code
 
-### React Config
-
-This includes everything in the default config, plus some extra react and JSX linting.
-
-Use this in your `.eslintrc` file:
-
-```json
-{
-  "extends": "@upstatement/eslint-config/react"
-}
-```
-
-In addition to installing this module with the [instructions above](#installation), you will also need to install [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react) and [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y).
-
-```sh
-npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
-
-or
-
-yarn add --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
-```
-
-### Vue Config
-
-This includes everything in the default config, plus some Vue linting.
-
-Use this in your `.eslintrc` file:
-
-```json
-{
-  "extends": "@upstatement/eslint-config/vue"
-}
-```
-
-In addition to installing this module with the [instructions above](#installation), you will also need to install [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue) and [`vue-eslint-parser`](https://github.com/mysticatea/vue-eslint-parser).
-
-```sh
-npm install --save-dev eslint-plugin-vue vue-eslint-parser
-
-or
-
-yarn add --save-dev eslint-plugin-vue vue-eslint-parser
-```
-
-## [Editor Integration](https://eslint.org/docs/user-guide/integrations#editors)
-
-### Visual Studio Code
-
-1. Install ESLint extension: `View → Extensions` then find and install ESLint
+1. Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): `View → Extensions` then find and install ESLint
 2. Reload the editor
-3. In your user settings `Code → Preferences → Settings` add `"eslint.autoFixOnSave": true`
+3. In your VS Code user settings `Code/File → Preferences → Settings` click the `{}` icon in the top right corner to modify your `settings.json` file
 
-### Sublime Text 3
+    ```json
+    // This will autoformat your code on save with Prettier rules
+    "editor.formatOnSave": true,
+    // Turn off `editor.formatOnSave` for vue files, we will do this via ESLint
+    // Prettier also doesn't play well with the vue ESLint config
+    "[vue]": {
+      "editor.formatOnSave": false
+    },
+    "eslint.alwaysShowStatus": true,
+    // Tell the ESLint plugin to run on save
+    "eslint.autoFixOnSave": true,
+    "eslint.options": {
+      "extensions": [".html", ".js", ".vue", ".jsx"]
+    },
+    "eslint.validate": [
+      { "language": "html", "autoFix": true },
+      { "language": "vue", "autoFix": true },
+      { "language": "javascript", "autoFix": true },
+      { "language": "javascriptreact", "autoFix": true }
+    ],
+    ```
+
+### Sublime Text
 
 1. Install [Package Control](https://packagecontrol.io/installation)
 2. Install [ESLint-Formatter](https://github.com/TheSavior/ESLint-Formatter)
@@ -142,25 +191,25 @@ yarn add --save-dev eslint-plugin-vue vue-eslint-parser
 
 ## Pre-commit Hook
 
-As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky), which manage git hooks.
+As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky), which manages git hooks.
 
 1. `npm install --save-dev lint-staged husky`
-2. Update your `package.json` like this:
+2. In your `package.json`:
 
-```json
-{
-  "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    ```json
+    {
+      "lint-staged": {
+        "*.js": ["eslint --fix", "git add"]
+      },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      }
     }
-  }
-}
-```
+    ```
 
-## How to publish to npm
+## Publishing to npm
 
 Read npm's docs on [How to Update a Package](https://docs.npmjs.com/getting-started/publishing-npm-packages#how-to-update-a-package).
 
@@ -784,3 +833,16 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
   const str = `Hello, ${name}!`;
   const str = `Time: ${12 * 60 * 60 * 1000}`;
   ```
+
+## Overriding Rules
+
+If you'd like to override any rules, you can add the rules to your `.eslintrc` file.
+
+```json
+{
+  "extends": "@upstatement",
+  "rules": {
+    "no-console": "off"
+  }
+}
+```
