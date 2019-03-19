@@ -14,7 +14,7 @@ Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@up
   - [Four Spaces Config](#four-spaces-config)
   - [React Config](#react-config)
   - [Vue Config](#vue-config)
-- [Editor Integration & Autoformatting](#editor-integration-&-autoformatting)
+- [Editor Integration & Autoformatting](#editor-integration--autoformatting)
 - [Pre-commit Hook](#pre-commit-hook)
 - [Publishing to npm](#publishing-to-npm)
 - [Enforced Rules](#enforced-rules)
@@ -22,24 +22,29 @@ Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@up
 
 ## Installation
 
-This package has several [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies). Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
+This package has several [peer dependencies](https://docs.npmjs.com/files/package.json#peerdependencies).
+
+Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
 
 1. Install all dependencies
 
-    ```sh
-    # Requires npm 5.2+ and higher
-    npx install-peerdeps --dev @upstatement/eslint-config
-    ```
+    - **Option 1:** With `npx`
 
-    Or without `npx`
+      ```sh
+      npx install-peerdeps --dev @upstatement/eslint-config
+      ```
 
-    ```sh
-    npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+      **Note:** `npx` is a package runner that comes with npm 5.2 and higher that makes installing peer dependencies easier
 
-    # or
+    - **Option 2:** Without `npx`
 
-    yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
-    ```
+      ```sh
+      npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+
+      # or
+
+      yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+      ```
 
 1. Create an `.eslintrc` file at the root of your project with the following:
 
@@ -60,7 +65,7 @@ We export four ESLint configurations for your usage:
 
 ### Default Config
 
-**In your `.eslintrc`**
+**In your `.eslintrc`:**
 
 ```json
 {
@@ -74,7 +79,7 @@ We export four ESLint configurations for your usage:
 
 Includes everything in the default config, but replaces the indent rule with 4 spaces instead of 2 spaces.
 
-**In your `.eslintrc`**
+**In your `.eslintrc`:**
 
 ```json
 {
@@ -91,13 +96,11 @@ Includes everything in the default config, plus environment specification and re
 - [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react)
 - [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 
-**Installation**
-
 ```sh
 npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-jsx-a11y
 ```
 
-**In your `.eslintrc`**
+**In your `.eslintrc`:**
 
 ```json
 {
@@ -112,13 +115,11 @@ Includes everything in the default config, plus environment specification and vu
 - [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue)
 - [`vue-eslint-parser`](https://github.com/mysticatea/vue-eslint-parser)
 
-**Installation**
-
 ```sh
 npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-vue vue-eslint-parser
 ```
 
-**In your `.eslintrc`**
+**In your `.eslintrc`:**
 
 ```json
 {
@@ -128,17 +129,16 @@ npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier e
 
 ## Specifying Environments
 
-Our default & four spaces configs purposefully do not specify a certain environment as to not make any assumptions about your project.
+Our **default** & **four spaces** configs purposefully do not specify a certain environment as to not make any assumptions about your project. The only environment we do specify be default is `es6`. You can see all the [default settings here](https://github.com/Upstatement/eslint-config/blob/master/index.js).
 
-You should specify these yourself in your project's ESLint config. For example:
+Therefor, you should specify your project's environment yourself in your ESLint config. For example:
 
 ```json
 {
   "extends": "@upstatement",
   "env": {
     "browser": true,
-    "node": true,
-    "es6": true
+    "node": true
   }
 }
 ```
@@ -153,28 +153,27 @@ Once you've installed the config, you probably want your editor to lint and fix 
 
 1. Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): `View → Extensions` then find and install ESLint
 2. Reload the editor
-3. In your VS Code user settings `Code/File → Preferences → Settings` click the `{}` icon in the top right corner to modify your `settings.json` file
+3. In your VS Code user settings `Code/File → Preferences → Settings` or `CMD/CTRL + ,` click the `{}` icon in the top right corner to modify your `settings.json` file
 
     ```json
-    // This will autoformat your code on save with Prettier rules
+    // Format on save with Prettier rules
     "editor.formatOnSave": true,
-    // Turn off `editor.formatOnSave` for vue files, we will do this via ESLint
-    // Prettier also doesn't play well with the vue ESLint config
+    // Turn it off for vue files, we will do this via ESLint
     "[vue]": {
       "editor.formatOnSave": false
     },
     "eslint.alwaysShowStatus": true,
     // Tell the ESLint plugin to run on save
     "eslint.autoFixOnSave": true,
-    "eslint.options": {
-      "extensions": [".html", ".js", ".vue", ".jsx"]
-    },
+    // An array of language identifiers specify the files to be validated
     "eslint.validate": [
       { "language": "html", "autoFix": true },
       { "language": "vue", "autoFix": true },
       { "language": "javascript", "autoFix": true },
       { "language": "javascriptreact", "autoFix": true }
     ],
+    // Turn off prettier extension for js, jsx, and vue files since we're handling that with ESLint
+    "prettier.disableLanguages": ["javascript", "javascriptreact", "vue"],
     ```
 
 ### Sublime Text
