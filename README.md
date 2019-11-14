@@ -8,17 +8,23 @@ Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@up
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Configurations](#configurations)
-  - [Default Config](#default-config)
-  - [Four Spaces Config](#four-spaces-config)
-  - [React Config](#react-config)
-  - [Vue Config](#vue-config)
-- [Editor Integration & Autoformatting](#editor-integration--autoformatting)
-- [Pre-commit Hook](#pre-commit-hook)
-- [Publishing to npm](#publishing-to-npm)
-- [Enforced Rules](#enforced-rules)
-- [Overriding Rules](#overriding-rules)
+- [eslint-config](#eslint-config)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Configurations](#configurations)
+    - [Default Config](#default-config)
+    - [Four Spaces Config](#four-spaces-config)
+    - [React Config](#react-config)
+    - [Vue Config](#vue-config)
+  - [Specifying Environments](#specifying-environments)
+  - [Editor Integration & Autoformatting](#editor-integration--autoformatting)
+    - [VS Code](#vs-code)
+    - [Sublime Text](#sublime-text)
+    - [Atom](#atom)
+  - [Pre-commit Hook](#pre-commit-hook)
+  - [Publishing to npm](#publishing-to-npm)
+  - [Enforced Rules](#enforced-rules)
+  - [Overriding Rules](#overriding-rules)
 
 ## Installation
 
@@ -198,7 +204,10 @@ As another line of defense, if you want ESLint to automatically fix your errors 
     ```json
     {
       "lint-staged": {
-        "*.js": ["eslint --fix", "git add"]
+        "*.js": [
+          "eslint --fix",
+          "git add",
+        ]
       },
       "husky": {
         "hooks": {
