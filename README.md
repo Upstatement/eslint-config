@@ -114,6 +114,31 @@ npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier e
 }
 ```
 
+#### Using Create React App?
+
+Until recently Create React App didn't give you an easy way to extend the default ESLint configuration short of ejecting. This was particularly problematic as ESLint is run during production builds (with `react-scripts build`), and lint errors would actually result in build failures.
+
+It now supports an [experimental method to extend ESLint](https://create-react-app.dev/docs/setting-up-your-editor/#experimental-extending-the-eslint-config). Here's how it works with this configuration:
+
+1. Extend the base config (`react-app`) in your ESLint configuration:
+
+  ```
+  {
+    "extends": ["react-app", "@upstatement/eslint-config/react"],
+    "rules": {
+      "no-console": "off"
+    }
+  }
+  ```
+
+2. Set the `EXTEND_ESLINT` environment variable in your `.env` file (for local development) and in your hosting providers environment variables configuration (for remote builds):
+
+  ```
+  EXTEND_ESLINT=true
+  ```
+
+This will ensure that the same ruleset is enforced for local development and production builds.
+
 ### Vue Config
 
 Includes everything in the default config, plus environment specification and vue-specific rules with
