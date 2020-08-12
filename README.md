@@ -124,7 +124,7 @@ It now supports an [experimental method to extend ESLint](https://create-react-a
 
   ```
   {
-    "extends": ["react-app", "@upstatement/eslint-config/react"],
+    "extends": ["react-app", "@upstatement/eslint-config/react"]
   }
   ```
 
