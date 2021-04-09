@@ -104,7 +104,8 @@ Includes everything in the default config, plus environment specification and re
 - [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 
 ```sh
-npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-jsx-a11y
+npx install-peerdeps --dev @upstatement/eslint-config \
+  && npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
 ```
 
 **In your `.eslintrc`:**
@@ -123,17 +124,17 @@ It now supports an [experimental method to extend ESLint](https://create-react-a
 
 1. Extend the base config (`react-app`) in your ESLint configuration:
 
-  ```
-  {
-    "extends": ["react-app", "@upstatement/eslint-config/react"]
-  }
-  ```
+   ```json
+   {
+     "extends": ["react-app", "@upstatement/eslint-config/react"]
+   }
+   ```
 
 2. Set the `EXTEND_ESLINT` environment variable in your `.env` file (for local development) and in your hosting providers environment variables configuration (for remote builds):
 
-  ```
-  EXTEND_ESLINT=true
-  ```
+   ```json
+   EXTEND_ESLINT=true
+   ```
 
 This will ensure that the same ruleset is enforced for local development and production builds.
 
@@ -145,7 +146,8 @@ Includes everything in the default config, plus environment specification and vu
 - [`vue-eslint-parser`](https://github.com/mysticatea/vue-eslint-parser)
 
 ```sh
-npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-vue vue-eslint-parser
+npx install-peerdeps --dev @upstatement/eslint-config \
+  && eslint-plugin-vue vue-eslint-parser
 ```
 
 **In your `.eslintrc`:**
