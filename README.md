@@ -15,6 +15,7 @@ Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@up
     - [Default Config](#default-config)
     - [Four Spaces Config](#four-spaces-config)
     - [React Config](#react-config)
+      - [Using Create React App?](#using-create-react-app)
     - [Vue Config](#vue-config)
   - [Specifying Environments](#specifying-environments)
   - [Editor Integration & Autoformatting](#editor-integration--autoformatting)
@@ -218,26 +219,50 @@ Once you've installed the config, you probably want your editor to lint and fix 
 
 ## Pre-commit Hook
 
-As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky), which manages git hooks.
+As another line of defense, if you want ESLint & Prettier to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky).
 
-1. `npm install --save-dev lint-staged husky`
-2. In your `package.json`:
+1. Make sure [eslint](#eslint) & [prettier](#prettier) configs are installed and set up
 
-    ```json
-    {
-      "lint-staged": {
-        "*.js": [
-          "eslint --fix",
-          "git add",
-        ]
-      },
-      "husky": {
-        "hooks": {
-          "pre-commit": "lint-staged"
-        }
-      }
+2. Make sure your `npm` version is >= 7.0.0
+
+   ```shell
+   npm install -g npm@latest
+   ```
+
+3. Make sure your repo has been initialized with git
+
+   ```shell
+   git init --initial-branch=main
+   ```
+
+4. Install the npm packages
+
+   ```shell
+   npm install --save-dev lint-staged husky
+   ```
+
+5. Set up the `package.json` stuff
+
+   ```shell
+   npm set-script prepare "husky install" && npm run prepare \
+     && npm set-script lint-staged "lint-staged" \
+     && npx husky add .husky/pre-commit "npm run lint-staged"
+   ```
+
+6. Then in your `package.json` add
+
+   ```json
+    "lint-staged": {
+      "*.{js,css,json,md}": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
     }
-    ```
+   ```
 
 ## Publishing to npm
 
