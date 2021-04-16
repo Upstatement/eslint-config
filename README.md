@@ -60,7 +60,7 @@ Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the 
     ```json
     {
       "root": true,
-      "extends": "@upstatement",
+      "extends": "@upstatement"
     }
     ```
 
