@@ -19,7 +19,7 @@
     "email": "tech@upstatement.com",
     "twitter": "@upstatement"
   },
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/Upstatement/eslint-config",
   "bugs": {
     "url": "https://github.com/Upstatement/eslint-config/issues"
