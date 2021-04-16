@@ -46,18 +46,19 @@ Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the 
     - **Option 2:** Without `npx`
 
       ```sh
-      npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+      npm install --save-dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
 
       # or
 
-      yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+      yarn add --dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
       ```
 
-1. Create an `.eslintrc` file at the root of your project with the following:
+2. Create an `.eslintrc` file at the root of your project with the following:
 
     ```json
     {
-      "extends": "@upstatement"
+      "root": true,
+      "extends": "@upstatement",
     }
     ```
 
@@ -72,10 +73,11 @@ We export four ESLint configurations for your usage:
 
 ### Default Config
 
-**In your `.eslintrc`:**
+In your `.eslintrc`:
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement"
 }
 ```
@@ -86,10 +88,11 @@ We export four ESLint configurations for your usage:
 
 Includes everything in the default config, but replaces the indent rule with 4 spaces instead of 2 spaces.
 
-**In your `.eslintrc`:**
+In your `.eslintrc`:
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement/eslint-config/four-spaces"
 }
 ```
@@ -112,6 +115,7 @@ npx install-peerdeps --dev @upstatement/eslint-config \
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement/eslint-config/react"
 }
 ```
@@ -126,6 +130,7 @@ It now supports an [experimental method to extend ESLint](https://create-react-a
 
    ```json
    {
+     "root": true,
      "extends": ["react-app", "@upstatement/eslint-config/react"]
    }
    ```
@@ -150,10 +155,11 @@ npx install-peerdeps --dev @upstatement/eslint-config \
   && eslint-plugin-vue vue-eslint-parser
 ```
 
-**In your `.eslintrc`:**
+In your `.eslintrc`
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement/eslint-config/vue"
 }
 ```
@@ -162,10 +168,11 @@ npx install-peerdeps --dev @upstatement/eslint-config \
 
 Our **default** & **four spaces** configs purposefully do not specify a certain environment as to not make any assumptions about your project. The only environment we do specify be default is `es6`. You can see all the [default settings here](https://github.com/Upstatement/eslint-config/blob/master/index.js).
 
-Therefor, you should specify your project's environment yourself in your ESLint config. For example:
+Therefore, you should specify your project's environment yourself in your ESLint config. For example:
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement",
   "env": {
     "browser": true,
@@ -978,6 +985,7 @@ If you'd like to override any rules, you can add the rules to your `.eslintrc` f
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement",
   "rules": {
     "no-console": "off"
