@@ -33,7 +33,9 @@ This package has several [peer dependencies](https://docs.npmjs.com/files/packag
 
 Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
 
-1. Install all dependencies
+1. Make sure your project is using a Node version >= `10.12.0`
+
+2. Install dependencies
 
     - **Option 1:** With `npx`
 
@@ -53,7 +55,7 @@ Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the 
       yarn add --dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
       ```
 
-2. Create an `.eslintrc` file at the root of your project with the following:
+3. Create an `.eslintrc` file at the root of your project with the following:
 
     ```json
     {
@@ -61,6 +63,8 @@ Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the 
       "extends": "@upstatement",
     }
     ```
+
+    Then make sure to [specify your environment](#specifying-environments) based on your project.
 
 ## Configurations
 
@@ -166,7 +170,7 @@ In your `.eslintrc`
 
 ## Specifying Environments
 
-Our **default** & **four spaces** configs purposefully do not specify a certain environment as to not make any assumptions about your project. The only environment we do specify be default is `es6`. You can see all the [default settings here](https://github.com/Upstatement/eslint-config/blob/master/index.js).
+Our default & four spaces configs purposefully do not specify a certain environment as to not make any assumptions about your project. The only environment we do specify by default is `es6`. [View all available environments](https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments)
 
 Therefore, you should specify your project's environment yourself in your ESLint config. For example:
 
@@ -180,8 +184,6 @@ Therefore, you should specify your project's environment yourself in your ESLint
   }
 }
 ```
-
-View all available environments in the [ESLint Docs](https://eslint.org/docs/user-guide/configuring#specifying-environments)
 
 ## Editor Integration & Autoformatting
 
