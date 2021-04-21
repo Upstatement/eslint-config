@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/%40upstatement%2Feslint-config.svg)](https://badge.fury.io/js/%40upstatement%2Feslint-config)
 
-Upstatement's [`ESLint`](https://eslint.org/) configuration.
+Upstatement's [ESLint](https://eslint.org/) configuration.
 
-Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@upstatement/prettier-config).
+Pairs well with our [Prettier configuration](https://www.npmjs.com/package/@upstatement/prettier-config).
 
 ## Table of Contents
 
@@ -15,13 +15,14 @@ Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@up
     - [Default Config](#default-config)
     - [Four Spaces Config](#four-spaces-config)
     - [React Config](#react-config)
+      - [Using Create React App?](#using-create-react-app)
     - [Vue Config](#vue-config)
   - [Specifying Environments](#specifying-environments)
   - [Editor Integration & Autoformatting](#editor-integration--autoformatting)
     - [VS Code](#vs-code)
     - [Sublime Text](#sublime-text)
     - [Atom](#atom)
-  - [Pre-commit Hook](#pre-commit-hook)
+  - [Pre-commit Hooks](#pre-commit-hooks)
   - [Publishing to npm](#publishing-to-npm)
   - [Enforced Rules](#enforced-rules)
   - [Overriding Rules](#overriding-rules)
@@ -186,22 +187,22 @@ Once you've installed the config, you probably want your editor to lint and fix 
     ```json
     // Format on save with Prettier rules
     "editor.formatOnSave": true,
-    // Turn it off for vue files, we will do this via ESLint
+    // Tell the ESLint plugin to run on save
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    // Turn off Prettier format on save, use ESLint to format instead
+    "[javascript]": {
+      "editor.formatOnSave": false
+    },
     "[vue]": {
       "editor.formatOnSave": false
     },
     "eslint.alwaysShowStatus": true,
-    // Tell the ESLint plugin to run on save
-    "eslint.autoFixOnSave": true,
     // An array of language identifiers specify the files to be validated
-    "eslint.validate": [
-      { "language": "html", "autoFix": true },
-      { "language": "vue", "autoFix": true },
-      { "language": "javascript", "autoFix": true },
-      { "language": "javascriptreact", "autoFix": true }
-    ],
-    // Turn off prettier extension for js, jsx, and vue files since we're handling that with ESLint
-    "prettier.disableLanguages": ["javascript", "javascriptreact", "vue"],
+    "eslint.options": {
+      "extensions": [".html", ".js", ".vue", ".jsx"]
+    },
     ```
 
 ### Sublime Text
@@ -216,28 +217,46 @@ Once you've installed the config, you probably want your editor to lint and fix 
 2. Install all dependencies (and restart the editor couple of times during installation)
 3. Enable auto fix on save: `Preferences → Packages → linter-eslint` then check `Fix errors on save checkbox`
 
-## Pre-commit Hook
+## Pre-commit Hooks
 
-As another line of defense, if you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky), which manages git hooks.
+If you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky).
 
-1. `npm install --save-dev lint-staged husky`
-2. In your `package.json`:
+1. Make sure your `npm` version is >= 7.0.0
 
-    ```json
-    {
-      "lint-staged": {
-        "*.js": [
-          "eslint --fix",
-          "git add",
-        ]
-      },
-      "husky": {
-        "hooks": {
-          "pre-commit": "lint-staged"
-        }
-      }
+   ```shell
+   npm install -g npm@latest
+   ```
+
+2. Make sure your repo has been initialized with git
+
+   ```shell
+   git init --initial-branch=main
+   ```
+
+3. Install the npm packages
+
+   ```shell
+   npm install --save-dev lint-staged husky
+   ```
+
+4. Set up the `package.json` stuff
+
+   ```shell
+   npm set-script prepare "husky install" && npm run prepare \
+     && npm set-script lint-staged "lint-staged" \
+     && npx husky add .husky/pre-commit "npm run lint-staged"
+   ```
+
+5. Then in your `package.json` add
+
+   ```json
+    "lint-staged": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
     }
-    ```
+   ```
 
 ## Publishing to npm
 
