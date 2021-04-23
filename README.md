@@ -277,11 +277,21 @@ As another line of defense, if you want ESLint & Prettier to automatically fix y
 
 Read npm's docs on [How to Update a Package](https://docs.npmjs.com/getting-started/publishing-npm-packages#how-to-update-a-package).
 
-1. `npm login`
-   - Make sure you're logged into Upstatement's npm account with the credentials from 1pass. `npm whoami` will tell you if you're already logged in.
-2. `npm version <update_type>`
-   - `update_type` can be `patch`, `minor`, or `major`. If you don't know which one to use, read up about [semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning).
-3. `npm publish`
+1. Checkout and pull the `main` branch
+
+2. Run the release script to bump the version numbers (the script will create a commit and push up the release branch to GitHub for you)
+
+    ```shell
+    ./scripts/release
+    ```
+
+    Use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning/) to choose the appropriate version number.
+
+3. Submit and merge a PR from the release branch into `main`
+
+4. Make sure you're logged into npm from the command line using `npm whoami`. If you're not logged in, `npm login` with the credentials in 1pass
+
+5. `npm publish`
 
 ## Enforced Rules
 

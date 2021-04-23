@@ -1,0 +1,42 @@
+#!/bin/bash
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+set -e
+
+echo "-----------------------------------------------"
+echo "        🚀 Creating a new release  🚀"
+echo "-----------------------------------------------"
+
+# Get the current version from the package.json
+CURRENT=$(cat package.json \
+  | grep version \
+  | head -1 \
+  | awk -F: '{ print $2 }' \
+  | sed 's/[",]//g' \
+  | tr -d '[[:space:]]')
+
+# Prompt the user for the new release version
+printf "Current release version:${bold} ${CURRENT} ${normal}\n"
+printf "Please enter new release version: "
+read -r RELEASE
+
+if [ -z $RELEASE ]; then
+  echo "Please specify a release number"
+  exit 1
+fi
+
+printf "Bumping version from ${bold} ${CURRENT} ${normal} 👉 ${bold} ${RELEASE} ${normal} \n"
+
+# Create & switch to the release branch
+git checkout -b release-$RELEASE
+
+# Bump the package.json & package-lock.json versions
+# https://docs.npmjs.com/cli/version
+npm version $RELEASE --no-git-tag-version
+
+# Commit & push the release branch to GitHub
+git add .
+git commit -m "Bump version to $RELEASE"
+git push origin release-$RELEASE
