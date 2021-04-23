@@ -19,15 +19,16 @@
     "email": "tech@upstatement.com",
     "twitter": "@upstatement"
   },
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/Upstatement/eslint-config",
   "bugs": {
     "url": "https://github.com/Upstatement/eslint-config/issues"
   },
   "peerDependencies": {
-    "eslint": "^6.x.x",
-    "babel-eslint": "^10.x.x",
-    "prettier": "^1.x.x",
-    "eslint-config-prettier": "^6.x.x"
+    "@babel/core": "^7.x.x",
+    "@babel/eslint-parser": "^7.x.x",
+    "eslint": "^7.x.x",
+    "eslint-config-prettier": "^8.x.x",
+    "prettier": "^2.x.x"
   }
 }
