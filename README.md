@@ -1,14 +1,12 @@
-# eslint-config
+# Upstatement ESLint Config
 
 [![npm version](https://badge.fury.io/js/%40upstatement%2Feslint-config.svg)](https://badge.fury.io/js/%40upstatement%2Feslint-config)
 
-Upstatement's [ESLint](https://eslint.org/) configuration.
-
-Pairs well with our [Prettier configuration](https://www.npmjs.com/package/@upstatement/prettier-config).
+Pairs well with our [Prettier config](https://www.npmjs.com/package/@upstatement/prettier-config).
 
 ## Table of Contents
 
-- [eslint-config](#eslint-config)
+- [Upstatement ESLint Config](#upstatement-eslint-config)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Configurations](#configurations)
@@ -185,7 +183,7 @@ Therefore, you should specify your project's environment yourself in your ESLint
 }
 ```
 
-## Editor Integration & Autoformatting
+## [Editor Integration](https://eslint.org/docs/user-guide/integrations) & Autoformatting
 
 Once you've installed the config, you probably want your editor to lint and fix your code for you.
 
@@ -193,7 +191,7 @@ Once you've installed the config, you probably want your editor to lint and fix 
 
 1. Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): `View → Extensions` then find and install ESLint
 2. Reload the editor
-3. In your VS Code user settings `Code/File → Preferences → Settings` or `CMD/CTRL + ,` click the `{}` icon in the top right corner to modify your `settings.json` file
+3. Open your [settings JSON file](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations) and add the following
 
     ```json
     // Format on save with Prettier rules
@@ -292,7 +290,7 @@ Upstatement's ESLint config extends `eslint:recommended` which enables rules tha
 The rules listed below are rules we have enabled on top of those enabled by `eslint:recommended`.
 
 <details>
-<summary>no-console</summary>
+  <summary>no-console</summary>
 
   It's perfectly fine to use `console.log` during development, but you shouldn't use `console.log` in production code. If you _really_ need to print something to the console, use `console.warn` or `console.error`.
 
@@ -310,7 +308,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>curly</summary>
+  <summary>curly</summary>
 
   Always use curly braces.
 
@@ -339,7 +337,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>eqeqeq</summary>
+  <summary>eqeqeq</summary>
 
   Use `===` and `!==` over `==` and `!=`.
 
@@ -370,7 +368,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>no-eq-null</summary>
+  <summary>no-eq-null</summary>
 
   Don't write `null` comparisons without type-checking operators.
 
@@ -399,7 +397,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>no-use-before-define</summary>
+  <summary>no-use-before-define</summary>
 
   Don't use constiables before they are defined.
 
@@ -426,7 +424,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>brace-style</summary>
+  <summary>brace-style</summary>
 
   Be consistent with brace style for blocks. Keep `else` on the same line as the preceding curly brace.
 
@@ -450,7 +448,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>comma-dangle</summary>
+  <summary>comma-dangle</summary>
 
   Use trailing commas when possible.
 
@@ -477,7 +475,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>comma-spacing</summary>
+  <summary>comma-spacing</summary>
 
   Put spaces after commas. Don't put spaces before commas.
 
@@ -500,7 +498,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>comma-style</summary>
+  <summary>comma-style</summary>
 
   Commas should come after and on the same line as an array element, object property, or constiable declaration.
 
@@ -539,7 +537,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>func-call-spacing</summary>
+  <summary>func-call-spacing</summary>
 
   Don't add a space between a function name and the opening parenthesis.
 
@@ -554,7 +552,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>indent</summary>
+  <summary>indent</summary>
 
   This ESLint config defaults to 2 space indentation.
 
@@ -581,7 +579,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>key-spacing</summary>
+  <summary>key-spacing</summary>
 
   Use consistent spacing between keys and values in object literals. Use a space after the colon and disallows a space before the colon.
 
@@ -597,7 +595,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>keyword-spacing</summary>
+  <summary>keyword-spacing</summary>
 
   Use consistent spacing before and after keywords. Use at least one space before and after keywords.
 
@@ -624,7 +622,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>object-curly-spacing</summary>
+  <summary>object-curly-spacing</summary>
 
   Use a space inside of braces (except `{}`)
 
@@ -650,7 +648,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>one-const</summary>
+  <summary>one-const</summary>
 
   Use multiple constiable declarations per scope.
 
@@ -676,7 +674,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>quotes</summary>
+  <summary>quotes</summary>
 
   Use single quotes wherever possible. Use backticks with template literals.
 
@@ -693,7 +691,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>semi</summary>
+  <summary>semi</summary>
 
   Use semicolons at the end of statements.
 
@@ -720,7 +718,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>space-before-function-paren</summary>
+  <summary>space-before-function-paren</summary>
 
   Don't put a space before the `(` of arguments.
 
@@ -747,7 +745,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>space-infix-ops</summary>
+  <summary>space-infix-ops</summary>
 
   Put spaces around infix operators.
 
@@ -772,7 +770,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>arrow-body-style</summary>
+  <summary>arrow-body-style</summary>
 
   Disallow the use of braces around arrow function body as needed. One-liners can be more readable!
 
@@ -808,7 +806,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>arrow-parens</summary>
+  <summary>arrow-parens</summary>
 
   Omit parens when there is only one argument. Unnecessary parens make code less readable.
 
@@ -833,7 +831,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>arrow-spacing</summary>
+  <summary>arrow-spacing</summary>
 
   Put spaces before and after an arrow function’s arrow.
 
@@ -856,7 +854,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>no-duplicate-imports</summary>
+  <summary>no-duplicate-imports</summary>
 
   All imports from a single module should exist in a single import statement.
 
@@ -874,7 +872,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>no-useless-constructor</summary>
+  <summary>no-useless-constructor</summary>
 
   Don't include useless class constructors that can be safely removed without changing how the class works.
 
@@ -908,7 +906,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>no-var</summary>
+  <summary>no-var</summary>
 
   Use `let` or `const` instead of `var`.
 
@@ -927,7 +925,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>prefer-const</summary>
+  <summary>prefer-const</summary>
 
   Use `const` instead of `let` when a constiable is never reassigned.
 
@@ -964,7 +962,7 @@ The rules listed below are rules we have enabled on top of those enabled by `esl
 </details>
 
 <details>
-<summary>prefer-template</summary>
+  <summary>prefer-template</summary>
 
   Use template literals instead of string concatenation.
 
