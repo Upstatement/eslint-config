@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/%40upstatement%2Feslint-config.svg)](https://badge.fury.io/js/%40upstatement%2Feslint-config)
 
-Upstatement's [`ESLint`](https://eslint.org/) configuration.
+Upstatement's [ESLint](https://eslint.org/) configuration.
 
-Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@upstatement/prettier-config).
+Pairs well with our [Prettier configuration](https://www.npmjs.com/package/@upstatement/prettier-config).
 
 ## Table of Contents
 
@@ -22,7 +22,7 @@ Pairs well with our [`Prettier configuration`](https://www.npmjs.com/package/@up
     - [VS Code](#vs-code)
     - [Sublime Text](#sublime-text)
     - [Atom](#atom)
-  - [Pre-commit Hook](#pre-commit-hook)
+  - [Pre-commit Hooks](#pre-commit-hooks)
   - [Publishing to npm](#publishing-to-npm)
   - [Enforced Rules](#enforced-rules)
   - [Overriding Rules](#overriding-rules)
@@ -198,22 +198,22 @@ Once you've installed the config, you probably want your editor to lint and fix 
     ```json
     // Format on save with Prettier rules
     "editor.formatOnSave": true,
-    // Turn it off for vue files, we will do this via ESLint
+    // Tell the ESLint plugin to run on save
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    // Turn off Prettier format on save, use ESLint to format instead
+    "[javascript]": {
+      "editor.formatOnSave": false
+    },
     "[vue]": {
       "editor.formatOnSave": false
     },
     "eslint.alwaysShowStatus": true,
-    // Tell the ESLint plugin to run on save
-    "eslint.autoFixOnSave": true,
     // An array of language identifiers specify the files to be validated
-    "eslint.validate": [
-      { "language": "html", "autoFix": true },
-      { "language": "vue", "autoFix": true },
-      { "language": "javascript", "autoFix": true },
-      { "language": "javascriptreact", "autoFix": true }
-    ],
-    // Turn off prettier extension for js, jsx, and vue files since we're handling that with ESLint
-    "prettier.disableLanguages": ["javascript", "javascriptreact", "vue"],
+    "eslint.options": {
+      "extensions": [".html", ".js", ".vue", ".jsx"]
+    },
     ```
 
 ### Sublime Text
@@ -228,9 +228,9 @@ Once you've installed the config, you probably want your editor to lint and fix 
 2. Install all dependencies (and restart the editor couple of times during installation)
 3. Enable auto fix on save: `Preferences → Packages → linter-eslint` then check `Fix errors on save checkbox`
 
-## Pre-commit Hook
+## Pre-commit Hooks
 
-As another line of defense, if you want ESLint & Prettier to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky).
+As another line of defense, if you want ESLint & Prettier to automatically fix your errors on commit, you can use [lint-staged](https://github.com/okonet/lint-staged) with [husky](https://github.com/typicode/husky).
 
 1. Make sure [eslint](#eslint) & [prettier](#prettier) configs are installed and set up
 
