@@ -33,7 +33,9 @@ This package has several [peer dependencies](https://docs.npmjs.com/files/packag
 
 Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the peer dependencies and versions.
 
-1. Install all dependencies
+1. Make sure your project is using a Node version >= `10.12.0`
+
+2. Install dependencies
 
     - **Option 1:** With `npx`
 
@@ -46,20 +48,23 @@ Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the 
     - **Option 2:** Without `npx`
 
       ```sh
-      npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+      npm install --save-dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
 
       # or
 
-      yarn add --dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier
+      yarn add --dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
       ```
 
-1. Create an `.eslintrc` file at the root of your project with the following:
+3. Create an `.eslintrc` file at the root of your project with the following:
 
     ```json
     {
+      "root": true,
       "extends": "@upstatement"
     }
     ```
+
+    Then make sure to [specify your environment](#specifying-environments) based on your project.
 
 ## Configurations
 
@@ -72,10 +77,11 @@ We export four ESLint configurations for your usage:
 
 ### Default Config
 
-**In your `.eslintrc`:**
+In your `.eslintrc`:
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement"
 }
 ```
@@ -86,10 +92,11 @@ We export four ESLint configurations for your usage:
 
 Includes everything in the default config, but replaces the indent rule with 4 spaces instead of 2 spaces.
 
-**In your `.eslintrc`:**
+In your `.eslintrc`:
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement/eslint-config/four-spaces"
 }
 ```
@@ -104,13 +111,15 @@ Includes everything in the default config, plus environment specification and re
 - [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 
 ```sh
-npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-jsx-a11y
+npx install-peerdeps --dev @upstatement/eslint-config \
+  && npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
 ```
 
 **In your `.eslintrc`:**
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement/eslint-config/react"
 }
 ```
@@ -123,17 +132,18 @@ It now supports an [experimental method to extend ESLint](https://create-react-a
 
 1. Extend the base config (`react-app`) in your ESLint configuration:
 
-  ```
-  {
-    "extends": ["react-app", "@upstatement/eslint-config/react"]
-  }
-  ```
+   ```json
+   {
+     "root": true,
+     "extends": ["react-app", "@upstatement/eslint-config/react"]
+   }
+   ```
 
 2. Set the `EXTEND_ESLINT` environment variable in your `.env` file (for local development) and in your hosting providers environment variables configuration (for remote builds):
 
-  ```
-  EXTEND_ESLINT=true
-  ```
+   ```json
+   EXTEND_ESLINT=true
+   ```
 
 This will ensure that the same ruleset is enforced for local development and production builds.
 
@@ -145,25 +155,28 @@ Includes everything in the default config, plus environment specification and vu
 - [`vue-eslint-parser`](https://github.com/mysticatea/vue-eslint-parser)
 
 ```sh
-npm install --save-dev @upstatement/eslint-config eslint babel-eslint prettier eslint-config-prettier eslint-plugin-vue vue-eslint-parser
+npx install-peerdeps --dev @upstatement/eslint-config \
+  && eslint-plugin-vue vue-eslint-parser
 ```
 
-**In your `.eslintrc`:**
+In your `.eslintrc`
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement/eslint-config/vue"
 }
 ```
 
 ## Specifying Environments
 
-Our **default** & **four spaces** configs purposefully do not specify a certain environment as to not make any assumptions about your project. The only environment we do specify be default is `es6`. You can see all the [default settings here](https://github.com/Upstatement/eslint-config/blob/master/index.js).
+Our default & four spaces configs purposefully do not specify a certain environment as to not make any assumptions about your project. The only environment we do specify by default is `es6`. [View all available environments](https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments)
 
-Therefor, you should specify your project's environment yourself in your ESLint config. For example:
+Therefore, you should specify your project's environment yourself in your ESLint config. For example:
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement",
   "env": {
     "browser": true,
@@ -171,8 +184,6 @@ Therefor, you should specify your project's environment yourself in your ESLint 
   }
 }
 ```
-
-View all available environments in the [ESLint Docs](https://eslint.org/docs/user-guide/configuring#specifying-environments)
 
 ## Editor Integration & Autoformatting
 
@@ -219,27 +230,29 @@ Once you've installed the config, you probably want your editor to lint and fix 
 
 ## Pre-commit Hooks
 
-If you want ESLint to automatically fix your errors on commit, you can use [`lint-staged`](https://github.com/okonet/lint-staged) with [`husky`](https://github.com/typicode/husky).
+As another line of defense, if you want ESLint & Prettier to automatically fix your errors on commit, you can use [lint-staged](https://github.com/okonet/lint-staged) with [husky](https://github.com/typicode/husky).
 
-1. Make sure your `npm` version is >= 7.0.0
+1. Make sure [eslint](#eslint) & [prettier](#prettier) configs are installed and set up
+
+2. Make sure your `npm` version is >= 7.0.0
 
    ```shell
    npm install -g npm@latest
    ```
 
-2. Make sure your repo has been initialized with git
+3. Make sure your repo has been initialized with git
 
    ```shell
    git init --initial-branch=main
    ```
 
-3. Install the npm packages
+4. Install the npm packages
 
    ```shell
    npm install --save-dev lint-staged husky
    ```
 
-4. Set up the `package.json` stuff
+5. Set up the `package.json` stuff
 
    ```shell
    npm set-script prepare "husky install" && npm run prepare \
@@ -247,10 +260,14 @@ If you want ESLint to automatically fix your errors on commit, you can use [`lin
      && npx husky add .husky/pre-commit "npm run lint-staged"
    ```
 
-5. Then in your `package.json` add
+6. Then in your `package.json` add
 
    ```json
     "lint-staged": {
+      "*.{js,css,json,md}": [
+        "prettier --write",
+        "git add"
+      ],
       "*.js": [
         "eslint --fix",
         "git add"
@@ -970,6 +987,7 @@ If you'd like to override any rules, you can add the rules to your `.eslintrc` f
 
 ```json
 {
+  "root": true,
   "extends": "@upstatement",
   "rules": {
     "no-console": "off"
