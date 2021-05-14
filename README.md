@@ -148,7 +148,17 @@ It now supports an [experimental method to extend ESLint](https://create-react-a
    }
    ```
 
-2. Set the `EXTEND_ESLINT` environment variable in your `.env` file (for local development) and in your hosting providers environment variables configuration (for remote builds):
+2. Add the babel config
+
+   ```json
+   {
+     "presets": [
+       "@babel/preset-react"
+     ]
+   }
+   ```
+
+3. Set the `EXTEND_ESLINT` environment variable in your `.env` file (for local development) and in your hosting providers environment variables configuration (for remote builds):
 
    ```json
    EXTEND_ESLINT=true

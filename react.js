@@ -17,6 +17,7 @@ module.exports = {
     "es6": true,
   },
   "rules": {
-    "react/no-unescaped-entities": ["error", { "forbid": [">", "\"", "}"] }]
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "\"", "}"] }],
+    "react/react-in-jsx-scope": "off"
   }
 }
