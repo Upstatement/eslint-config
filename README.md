@@ -107,10 +107,11 @@ Includes everything in the default config, plus environment specification and re
 
 - [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react)
 - [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+- [`@babel/preset-react`](https://github.com/babel/babel/tree/master/packages/babel-preset-react)
 
 ```sh
 npx install-peerdeps --dev @upstatement/eslint-config \
-  && npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y
+  && npm install --save-dev eslint-plugin-react eslint-plugin-jsx-a11y @babel/preset-react
 ```
 
 **In your `.eslintrc`:**
@@ -119,6 +120,16 @@ npx install-peerdeps --dev @upstatement/eslint-config \
 {
   "root": true,
   "extends": "@upstatement/eslint-config/react"
+}
+```
+
+**In your `.babelrc`:**
+
+```json
+{
+  "presets": [
+    "@babel/preset-react"
+  ]
 }
 ```
 
