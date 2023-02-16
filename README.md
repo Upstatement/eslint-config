@@ -16,7 +16,7 @@ Pairs well with our [Prettier config](https://www.npmjs.com/package/@upstatement
       - [Using Create React App?](#using-create-react-app)
     - [Vue Config](#vue-config)
   - [Specifying Environments](#specifying-environments)
-  - [Editor Integration & Autoformatting](#editor-integration--autoformatting)
+  - [Editor Integration \& Autoformatting](#editor-integration--autoformatting)
     - [VS Code](#vs-code)
     - [Sublime Text](#sublime-text)
     - [Atom](#atom)
@@ -46,11 +46,11 @@ Run `npm info "@upstatement/eslint-config@latest" peerDependencies` to list the 
     - **Option 2:** Without `npx`
 
       ```sh
-      npm install --save-dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
+      npm install --save-dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@8.x.x eslint-config-prettier@8.x.x prettier@2.x.x
 
       # or
 
-      yarn add --dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@7.x.x eslint-config-prettier@8.x.x prettier@2.x.x
+      yarn add --dev @upstatement/eslint-config @babel/core@7.x.x @babel/eslint-parser@7.x.x eslint@8.x.x eslint-config-prettier@8.x.x prettier@2.x.x
       ```
 
 3. Create an `.eslintrc` file at the root of your project with the following:
